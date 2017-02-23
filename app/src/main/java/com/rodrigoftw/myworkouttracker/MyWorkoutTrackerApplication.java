@@ -11,8 +11,8 @@ public class MyWorkoutTrackerApplication extends Application {
     /**
      * Fonts statics
      */
-    private static final String DEFAULT_REGULAR = "Quicksand-Regular.ttf";
-    private static final String DEFAULT_BOLD = "Quicksand-Bold.ttf";
+    private static final String DEFAULT_REGULAR = "montserrat/regular.ttf";
+    private static final String DEFAULT_BOLD = "montserrat/bold.ttf";
 
     /**
      * Instances
@@ -31,10 +31,10 @@ public class MyWorkoutTrackerApplication extends Application {
 
         // overrride font
 
-        FontsOverride.setDefaultFont(this, "BOLD", "Quicksand-Bold.ttf");
+        /*FontsOverride.setDefaultFont(this, "BOLD", "Quicksand-Bold.ttf");
         FontsOverride.setDefaultFont(this, "LIGHT", "Quicksand-Light.ttf");
         FontsOverride.setDefaultFont(this, "MEDIUM", "Quicksand-Medium.ttf");
-        FontsOverride.setDefaultFont(this, "REGULAR", "Quicksand-Regular.ttf");
+        FontsOverride.setDefaultFont(this, "REGULAR", "Quicksand-Regular.ttf");*/
         /*FontsOverride.setDefaultFont(this, "BOLD", "Quicksand_Bold.otf");
         FontsOverride.setDefaultFont(this, "BOLD_OBLIQUE", "Quicksand_Bold_Oblique.otf");
         FontsOverride.setDefaultFont(this, "BOOK", "Quicksand_Book.otf");
