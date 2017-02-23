@@ -1,0 +1,10 @@
+<resources>
+
+    <!-- Login Activity -->
+    <string name="app_name">My Workout Tracker</string>
+    <string name="email_label">E-mail</string>
+    <string name="password_label">Senha</string>
+    <string name="login_label">Entrar</string>
+    <string name="forgot_password_label">Esqueceu sua senha?</string>
+
+</resources>
