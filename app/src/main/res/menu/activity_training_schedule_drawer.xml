@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    fontPath="fonts/Quicksand-Light.ttf">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_schedule"
+            android:icon="@drawable/ic_menu_assignment"
+            android:title="@string/nav_item_home" />
+        <item
+            android:id="@+id/nav_history"
+            android:icon="@drawable/ic_menu_assessment"
+            android:title="@string/nav_item_history" />
+        <item
+            android:id="@+id/nav_calendar"
+            android:icon="@drawable/ic_menu_calendar"
+            android:title="@string/nav_item_calendar" />
+        <!--<item
+            android:id="@+id/nav_manage"
+            android:icon="@drawable/ic_menu_manage"
+            android:title="Tools" />-->
+    </group>
+
+    <item android:title="@string/nav_title_other">
+        <menu>
+            <item
+                android:id="@+id/nav_share"
+                android:icon="@drawable/ic_menu_share"
+                android:title="@string/nav_item_share" />
+
+            <item
+                android:id="@+id/nav_send"
+                android:icon="@drawable/ic_menu_people"
+                android:title="@string/nav_item_about" />
+        </menu>
+    </item>
+
+</menu>

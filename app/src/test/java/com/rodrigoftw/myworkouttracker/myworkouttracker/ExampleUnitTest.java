@@ -1,4 +1,4 @@
-package com.rodrigoftw.myworkouttracker;
+package com.rodrigoftw.myworkouttracker.myworkouttracker;
 
 import org.junit.Test;
 

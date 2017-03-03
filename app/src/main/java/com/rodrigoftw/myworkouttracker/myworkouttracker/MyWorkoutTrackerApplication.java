@@ -1,13 +1,14 @@
-package com.rodrigoftw.myworkouttracker;
+package com.rodrigoftw.myworkouttracker.myworkouttracker;
 
 import android.app.Application;
 import android.content.Context;
 
 import com.joanzapata.iconify.Iconify;
 import com.joanzapata.iconify.fonts.FontAwesomeModule;
-import com.rodrigoftw.myworkouttracker.util.FontsOverride;
 
-public class MyWorkoutTrackerApplication extends Application {
+import uk.co.chrisjenx.calligraphy.CalligraphyConfig;
+
+public final class MyWorkoutTrackerApplication extends Application {
     /**
      * Fonts statics
      */
@@ -23,6 +24,11 @@ public class MyWorkoutTrackerApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
+        CalligraphyConfig.initDefault(new CalligraphyConfig.Builder()
+                .setDefaultFontPath("fonts/Quicksand-Regular.ttf")
+                .setFontAttrId(R.attr.fontPath)
+                .build()
+        );
 
         MyWorkoutTrackerApplication.context = getApplicationContext();
 
@@ -30,11 +36,11 @@ public class MyWorkoutTrackerApplication extends Application {
         Iconify.with(new FontAwesomeModule());
 
         // overrride font
-
-        /*FontsOverride.setDefaultFont(this, "BOLD", "Quicksand-Bold.ttf");
-        FontsOverride.setDefaultFont(this, "LIGHT", "Quicksand-Light.ttf");
-        FontsOverride.setDefaultFont(this, "MEDIUM", "Quicksand-Medium.ttf");
-        FontsOverride.setDefaultFont(this, "REGULAR", "Quicksand-Regular.ttf");*/
+        //TypeFaceUtil.overrideFont(getApplicationContext(), "NORMAL", "fonts/Quicksand-Regular.ttf"); // font from assets: "assets/fonts/Roboto-Regular.ttf
+        /*FontsOverride.setDefaultFont(this, "BOLD", "fonts/Quicksand-Bold.ttf");
+        FontsOverride.setDefaultFont(this, "LIGHT", "fonts/Quicksand-Light.ttf");
+        FontsOverride.setDefaultFont(this, "MEDIUM", "fonts/Quicksand-Medium.ttf");
+        FontsOverride.setDefaultFont(this, "REGULAR", "fonts/Quicksand-Regular.ttf");*/
         /*FontsOverride.setDefaultFont(this, "BOLD", "Quicksand_Bold.otf");
         FontsOverride.setDefaultFont(this, "BOLD_OBLIQUE", "Quicksand_Bold_Oblique.otf");
         FontsOverride.setDefaultFont(this, "BOOK", "Quicksand_Book.otf");

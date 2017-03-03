@@ -1,4 +1,4 @@
-package com.rodrigoftw.myworkouttracker.activity;
+package com.rodrigoftw.myworkouttracker.myworkouttracker.activity;
 
 import android.content.Context;
 import android.content.pm.ActivityInfo;
@@ -13,7 +13,7 @@ import android.view.MenuItem;
 import android.view.WindowManager;
 import android.widget.TextView;
 
-import com.rodrigoftw.myworkouttracker.R;
+import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 
 /*import com.j256.ormlite.android.apptools.OpenHelperManager;*/
@@ -36,15 +36,20 @@ public class BaseActivity extends AppCompatActivity {
         }
     }
 
+    @Override
+    protected void attachBaseContext(Context newBase) {
+        super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
+    }
+
     protected void setupDrawerLayout(){
 
     }
 
     protected void setupToolbar(){
         // toolbar
-        toolbar = (Toolbar) findViewById(R.id.toolbar);
+        /*toolbar = (Toolbar) findViewById(R.id.toolbar);
         toolbarTitle = (TextView) findViewById(R.id.toolbarTitle);
-        setSupportActionBar(toolbar);
+        setSupportActionBar(toolbar);*/
         // getSupportActionBar().setElevation(1);
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);

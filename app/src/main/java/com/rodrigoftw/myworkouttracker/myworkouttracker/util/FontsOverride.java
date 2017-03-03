@@ -1,4 +1,4 @@
-package com.rodrigoftw.myworkouttracker.util;
+package com.rodrigoftw.myworkouttracker.myworkouttracker.util;
 
 import android.content.Context;
 import android.graphics.Typeface;
