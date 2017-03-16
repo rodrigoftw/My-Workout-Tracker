@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.rodrigoftw.myworkouttracker.myworkouttracker">
 
     <uses-permission android:name="android.permission.INTERNET" />
@@ -10,6 +11,7 @@
         android:name=".MyWorkoutTrackerApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
+        tools:replace="android:icon"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
@@ -27,7 +29,13 @@
         </activity>
 
         <activity android:name=".activity.TrainingScheduleActivity"
+            android:label="@string/home_title"
             android:theme="@style/AppTheme.NoActionBar"/>
+
+        <activity android:name=".activity.CalendarActivity"
+            android:label="@string/calendar_title"
+            android:theme="@style/AppTheme.NoActionBar"/>
+
     </application>
 
 </manifest>

@@ -13,6 +13,8 @@ import android.view.MenuItem;
 import android.view.WindowManager;
 import android.widget.TextView;
 
+import com.rodrigoftw.myworkouttracker.myworkouttracker.R;
+
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 
@@ -47,9 +49,9 @@ public class BaseActivity extends AppCompatActivity {
 
     protected void setupToolbar(){
         // toolbar
-        /*toolbar = (Toolbar) findViewById(R.id.toolbar);
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
         toolbarTitle = (TextView) findViewById(R.id.toolbarTitle);
-        setSupportActionBar(toolbar);*/
+        setSupportActionBar(toolbar);
         // getSupportActionBar().setElevation(1);
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);

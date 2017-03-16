@@ -12,17 +12,17 @@ import android.view.MenuItem;
 
 import com.rodrigoftw.myworkouttracker.myworkouttracker.R;
 
-public class TrainingScheduleActivity extends BaseActivity
+public class CalendarActivity extends BaseActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_training_schedule);
+        setContentView(R.layout.activity_calendar);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        setTitle(R.string.home_title);
+        setTitle(R.string.calendar_title);
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -73,12 +73,12 @@ public class TrainingScheduleActivity extends BaseActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_schedule) {
-
+            startActivity(new Intent(CalendarActivity.this,TrainingScheduleActivity.class));
+            finish();
         } else if (id == R.id.nav_history) {
 
         } else if (id == R.id.nav_calendar) {
-            startActivity(new Intent(TrainingScheduleActivity.this, CalendarActivity.class));
-            finish();
+
         } else if (id == R.id.nav_share) {
 
         } else if (id == R.id.nav_send) {
