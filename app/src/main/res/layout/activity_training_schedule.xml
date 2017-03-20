@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v4.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v4.widget.DrawerLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/drawer_layout"
@@ -9,18 +10,19 @@
     tools:openDrawer="start"
     tools:context="com.rodrigoftw.myworkouttracker.myworkouttracker.activity.TrainingScheduleActivity">
 
-    <include
-        layout="@layout/app_bar_training_schedule"
+    <android.support.design.widget.CoordinatorLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
-
-    <android.support.design.widget.NavigationView
-        android:id="@+id/nav_view"
-        android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:layout_gravity="start"
         android:fitsSystemWindows="true"
-        app:headerLayout="@layout/nav_header_training_schedule"
-        app:menu="@menu/activity_training_schedule_drawer" />
+        tools:context=".activity.TrainingScheduleActivity">
+
+        <include layout="@layout/toolbar"
+            android:id="@+id/include" />
+
+        <include layout="@layout/content_training_schedule" />
+
+    </android.support.design.widget.CoordinatorLayout>
+
+    <include layout="@layout/nav_view" />
 
 </android.support.v4.widget.DrawerLayout>

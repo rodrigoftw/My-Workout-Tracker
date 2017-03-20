@@ -21,7 +21,7 @@ public class CalendarActivity extends BaseActivity
         setContentView(R.layout.activity_calendar);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
+        toolbar.setTitleTextColor(android.graphics.Color.WHITE);
         setTitle(R.string.calendar_title);
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -32,6 +32,16 @@ public class CalendarActivity extends BaseActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+        /*CalendarDatePickerDialogFragment cdp = new CalendarDatePickerDialogFragment()
+                .setOnDateSetListener(SampleCalendarDateBasicUsage.this)
+                .setFirstDayOfWeek(Calendar.SUNDAY)
+                .setPreselectedDate(towDaysAgo.getYear(), towDaysAgo.getMonthOfYear() - 1, towDaysAgo.getDayOfMonth())
+                .setDateRange(minDate, null)
+                .setDoneText("Ok")
+                .setCancelText("Cancelar")
+                .setThemeDark(true);
+        cdp.show(getSupportFragmentManager(), FRAG_TAG_DATE_PICKER);*/
     }
 
     @Override
@@ -47,7 +57,7 @@ public class CalendarActivity extends BaseActivity
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.training_schedule, menu);
+        getMenuInflater().inflate(R.menu.menu_config, menu);
         return true;
     }
 

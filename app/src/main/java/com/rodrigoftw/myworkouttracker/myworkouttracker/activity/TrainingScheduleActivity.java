@@ -1,19 +1,36 @@
 package com.rodrigoftw.myworkouttracker.myworkouttracker.activity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ImageView;
 
+import com.github.aakira.expandablelayout.Utils;
 import com.rodrigoftw.myworkouttracker.myworkouttracker.R;
+import com.rodrigoftw.myworkouttracker.myworkouttracker.adapter.ExerciseAdapter;
+import com.rodrigoftw.myworkouttracker.myworkouttracker.model.ItemModel;
+import com.rodrigoftw.myworkouttracker.myworkouttracker.util.DividerItemDecoration;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class TrainingScheduleActivity extends BaseActivity
         implements NavigationView.OnNavigationItemSelectedListener {
+
+    public static void startActivity(Context context) {
+        context.startActivity(new Intent(context, TrainingScheduleActivity.class));
+    }
+
+    private Context ctx;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,8 +38,9 @@ public class TrainingScheduleActivity extends BaseActivity
         setContentView(R.layout.activity_training_schedule);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
+        toolbar.setTitleTextColor(android.graphics.Color.WHITE);
         setTitle(R.string.home_title);
+
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -32,6 +50,66 @@ public class TrainingScheduleActivity extends BaseActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+        final RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
+        recyclerView.addItemDecoration(new DividerItemDecoration(this));
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
+        final ImageView imageview = (ImageView) findViewById(R.id.exerciseImage);
+
+        final List<ItemModel> data = new ArrayList<>();
+        data.add(new ItemModel(
+                "1 - Supino Reto com Barra",
+                R.color.material_blue_500,
+                R.color.material_blue_300,
+                Utils.createInterpolator(Utils.FAST_OUT_SLOW_IN_INTERPOLATOR)));
+
+                /*ImageView image = (ImageView)findViewById(R.id.exerciseImage);
+                if (image != null){
+                    GlideDrawableImageViewTarget imageViewTarget = new GlideDrawableImageViewTarget(image);
+                    Glide.with(this).load("http://www.exrx.net/AnimatedEx/PectoralSternal/BBBenchPress.gif").into(imageViewTarget);
+                }*/
+                //Glide.with(this).load(R.raw.sample_gif).into(imageViewTarget);
+                //Glide.with(activity).load(url).asGif().into(view);;
+
+
+        data.add(new ItemModel(
+                "2 - Supino Inclinado com Barra",
+                R.color.material_blue_500,
+                R.color.material_blue_300,
+                Utils.createInterpolator(Utils.FAST_OUT_SLOW_IN_INTERPOLATOR)));
+
+        data.add(new ItemModel(
+                "3 - Supino Declinado com Barra",
+                R.color.material_blue_500,
+                R.color.material_blue_300,
+                Utils.createInterpolator(Utils.FAST_OUT_SLOW_IN_INTERPOLATOR)));
+        data.add(new ItemModel(
+                "4 - Crossover",
+                R.color.material_blue_500,
+                R.color.material_blue_300,
+                Utils.createInterpolator(Utils.FAST_OUT_SLOW_IN_INTERPOLATOR)));
+        data.add(new ItemModel(
+                "5 - Barra Fixa",
+                R.color.material_blue_500,
+                R.color.material_blue_300,
+                Utils.createInterpolator(Utils.FAST_OUT_SLOW_IN_INTERPOLATOR)));
+        data.add(new ItemModel(
+                "6 - Puxada Frontal",
+                R.color.material_blue_500,
+                R.color.material_blue_300,
+                Utils.createInterpolator(Utils.FAST_OUT_SLOW_IN_INTERPOLATOR)));
+        data.add(new ItemModel(
+                "7 - Puxada Traseira",
+                R.color.material_blue_500,
+                R.color.material_blue_300,
+                Utils.createInterpolator(Utils.FAST_OUT_SLOW_IN_INTERPOLATOR)));
+        data.add(new ItemModel(
+                "8 - Remada Sentada",
+                R.color.material_blue_500,
+                R.color.material_blue_300,
+                Utils.createInterpolator(Utils.FAST_OUT_SLOW_IN_INTERPOLATOR)));
+        recyclerView.setAdapter(new ExerciseAdapter(data));
     }
 
     @Override
@@ -47,7 +125,7 @@ public class TrainingScheduleActivity extends BaseActivity
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.training_schedule, menu);
+        getMenuInflater().inflate(R.menu.menu_config, menu);
         return true;
     }
 
