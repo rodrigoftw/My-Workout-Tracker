@@ -1,9 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <color name="colorPrimary">@color/material_blue_grey_400</color> <!-- #3F51B5 -->
-    <color name="colorPrimaryDark">@color/material_blue_grey_600</color> <!-- #303F9F -->
-    <color name="colorAccent">@color/material_blue_grey_300</color> <!-- #FF4081 -->
+    <color name="colorPrimary">#5f7c8a</color> <!-- #3F51B5 --> <!-- @color/material_blue_grey_400 -->
+    <color name="colorPrimaryLight">#ced7dc</color>
+    <color name="colorPrimaryDark">#445963</color> <!-- #303F9F --> <!-- @color/material_blue_grey_600 -->
+    <color name="colorControlNormal">#445963</color>
+    <color name="colorControlActivated">#445963</color>
+    <color name="colorAccent">#536dfe</color> <!-- #FF4081 --> <!-- @color/material_blue_grey_300 -->
+    <color name="colorPrimaryText">#202021</color>
+    <color name="colorSecondary">#747474</color>
+    <color name="colorText">#fefefe</color>
+    <color name="colorDivider">#bdbdbd</color>
     <color name="colorCard">#f9f9f9</color>
 
     <!-- Material Colors -->

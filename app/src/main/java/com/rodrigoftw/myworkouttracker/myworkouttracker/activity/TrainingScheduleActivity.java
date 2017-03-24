@@ -14,6 +14,11 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ImageView;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.resource.drawable.GlideDrawable;
+import com.bumptech.glide.request.RequestListener;
+import com.bumptech.glide.request.target.GlideDrawableImageViewTarget;
+import com.bumptech.glide.request.target.Target;
 import com.github.aakira.expandablelayout.Utils;
 import com.rodrigoftw.myworkouttracker.myworkouttracker.R;
 import com.rodrigoftw.myworkouttracker.myworkouttracker.adapter.ExerciseAdapter;
@@ -41,6 +46,7 @@ public class TrainingScheduleActivity extends BaseActivity
         toolbar.setTitleTextColor(android.graphics.Color.WHITE);
         setTitle(R.string.home_title);
 
+        this.ctx = this;
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -55,7 +61,30 @@ public class TrainingScheduleActivity extends BaseActivity
         recyclerView.addItemDecoration(new DividerItemDecoration(this));
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        final ImageView imageview = (ImageView) findViewById(R.id.exerciseImage);
+        ImageView imageview = (ImageView) findViewById(R.id.exerciseImage);
+
+        /*Glide.with(ctx)
+                .load("http://www.exrx.net/AnimatedEx/PectoralSternal/BBBenchPress.gif")
+                .asGif()
+                .placeholder(R.drawable.gif1benchpress)
+                .crossFade()
+                .into(imageview);*/
+
+       /* Glide
+            .with(getApplicationContext())
+            .load("http://www.exrx.net/AnimatedEx/PectoralSternal/BBBenchPress.gif")
+            .listener(new RequestListener<String, GlideDrawable>() {
+                @Override
+                public boolean onException(Exception e, String model, Target<GlideDrawable> target, boolean isFirstResource) {
+                    return false;
+                }
+
+                @Override
+                public boolean onResourceReady(GlideDrawable resource, String model, Target<GlideDrawable> target, boolean isFromMemoryCache, boolean isFirstResource) {
+                    return false;
+                }
+            })
+            .into(imageview);*/
 
         final List<ItemModel> data = new ArrayList<>();
         data.add(new ItemModel(
@@ -63,6 +92,10 @@ public class TrainingScheduleActivity extends BaseActivity
                 R.color.material_blue_500,
                 R.color.material_blue_300,
                 Utils.createInterpolator(Utils.FAST_OUT_SLOW_IN_INTERPOLATOR)));
+
+        /*ImageView imageView = (ImageView) findViewById(R.id.exerciseImage);
+        GlideDrawableImageViewTarget imageViewTarget = new GlideDrawableImageViewTarget(imageView);
+        Glide.with(this).load(R.drawable.gif1benchpress).into(imageViewTarget);*/
 
                 /*ImageView image = (ImageView)findViewById(R.id.exerciseImage);
                 if (image != null){
