@@ -2,6 +2,7 @@ package com.rodrigoftw.myworkouttracker.myworkouttracker.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -9,21 +10,24 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.CalendarView;
+import android.widget.Toast;
 
 import com.rodrigoftw.myworkouttracker.myworkouttracker.R;
 
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.List;
+import java.util.GregorianCalendar;
 import java.util.Locale;
 
-import io.blackbox_vision.materialcalendarview.view.CalendarView;
 
-public class CalendarActivity extends BaseActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
-    /*, CalendarDatePickerDialogFragment.OnDateSetListener*/
+public class CalendarActivity extends BaseActivity implements NavigationView.OnNavigationItemSelectedListener, CalendarView.OnDateChangeListener {
 
-    /*private static final String FRAG_TAG_DATE_PICKER = "fragment_date_picker_name";*/
+    private static final String DATE_TEMPLATE = "dd/MM/yyyy";
+    private static final String MONTH_TEMPLATE = "MMMM yyyy";
+    CalendarView calendar = null;
+    /*TextView trainingDate;*/
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,66 +47,27 @@ public class CalendarActivity extends BaseActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
-        /*CalendarDatePickerDialogFragment cdp = new CalendarDatePickerDialogFragment()
-                .setOnDateSetListener((CalendarDatePickerDialogFragment.OnDateSetListener) CalendarActivity.this)
-                .setFirstDayOfWeek(Calendar.SUNDAY)
-                .setPreselectedDate(towDaysAgo.getYear(), towDaysAgo.getMonthOfYear() - 1, towDaysAgo.getDayOfMonth())
-                .setDateRange(minDate, null)
-                .setDoneText("Ok")
-                .setCancelText("Cancelar")
-                .setThemeDark(true);
-        cdp.show(getSupportFragmentManager(), FRAG_TAG_DATE_PICKER);*/
+        calendar = (CalendarView) findViewById(R.id.calendar_view);
+        calendar.setOnDateChangeListener(this);
+        calendar.setFirstDayOfWeek(2);
+        calendar.setShowWeekNumber(false);
 
-        /*CalendarDatePickerDialogFragment cdp = new CalendarDatePickerDialogFragment()
-                .setOnDateSetListener(CalendarActivity.this);
-        cdp.show(getSupportFragmentManager(), FRAG_TAG_DATE_PICKER);*/
+        /*trainingDate = (TextView) findViewById(R.id.trainingDate);
+        trainingDate.setText(String.format("%s - Treino de Peitoral/Dorsal", formatDate(DATE_TEMPLATE, new Date(System.currentTimeMillis()))));*/
 
-        CalendarView calendarView = (CalendarView) findViewById(R.id.calendar_view);
-
-        calendarView.shouldAnimateOnEnter(true)
-                .setFirstDayOfWeek(Calendar.MONDAY)
-                .setOnDateClickListener(this::onDateClick)
-                .setOnMonthChangeListener(this::onMonthChange)
-                .setOnDateLongClickListener(this::onDateLongClick)
-                .setOnMonthTitleClickListener(this::onMonthTitleClick);
-
-        if (calendarView.isMultiSelectDayEnabled()) {
-            calendarView.setOnMultipleDaySelectedListener(this::onMultipleDaySelected);
-        }
-
-        calendarView.update(Calendar.getInstance(Locale.getDefault()));
+        /*animate(trainingDate, getApplicationContext());*/
     }
 
-    private void onDateClick(Date date) {
+    @Override
+    public void onSelectedDayChange(CalendarView view, int year, int monthOfYear, int dayOfMonth) {
+
+        Calendar then = new GregorianCalendar(year, monthOfYear, dayOfMonth);
+        Toast.makeText(this, then.getTime().toString(), Toast.LENGTH_LONG).show();
     }
 
-    private void onMonthChange(Date date) {
+    private String formatDate(@NonNull String dateTemplate, @NonNull Date date) {
+        return new SimpleDateFormat(dateTemplate, Locale.getDefault()).format(date);
     }
-
-    private void onDateLongClick(Date date) {
-    }
-
-    private void onMonthTitleClick(Date date) {
-    }
-
-    private void onMultipleDaySelected(int i, List<Date> dates) {
-    }
-
-    /*@Override
-    public void onResume() {
-        // Example of reattaching to the fragment
-        super.onResume();
-        CalendarDatePickerDialogFragment calendarDatePickerDialogFragment = (CalendarDatePickerDialogFragment) getSupportFragmentManager()
-                .findFragmentByTag(FRAG_TAG_DATE_PICKER);
-        if (calendarDatePickerDialogFragment != null) {
-            calendarDatePickerDialogFragment.setOnDateSetListener(this);
-        }
-    }*/
-
-    /*@Override
-    public void onDateSet(CalendarDatePickerDialogFragment dialog, int year, int monthOfYear, int dayOfMonth) {
-
-    }*/
 
     @Override
     public void onBackPressed() {

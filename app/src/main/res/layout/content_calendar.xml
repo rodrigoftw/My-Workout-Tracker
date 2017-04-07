@@ -27,14 +27,8 @@
         android:id="@+id/calendar_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/colorPrimary">
-    </io.blackbox_vision.materialcalendarview.view.CalendarView>-->
-
-    <io.blackbox_vision.materialcalendarview.view.CalendarView
-        android:id="@+id/calendar_view"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:forceHasOverlappingRendering="true"
+        android:elevation="4dp"
+        android:background="@color/colorPrimary"
         app:calendarIsMultiSelectDayEnabled="false"
         app:calendarIsOverflowDatesVisible="true"
         app:calendarBackgroundColor="@color/colorPrimary"
@@ -49,7 +43,68 @@
         app:calendarCurrentDayBackgroundColor="@color/colorAccent"
         app:calendarWeekendTextColor="@android:color/white"
         app:calendarButtonBackgroundColor="@android:color/white"
-        app:calendarWeekendDays="saturday|sunday">
-    </io.blackbox_vision.materialcalendarview.view.CalendarView>
+        app:calendarWeekendDays="saturday|sunday"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
+    </io.blackbox_vision.materialcalendarview.view.CalendarView>-->
+
+    <!--<com.prolificinteractive.materialcalendarview.MaterialCalendarView
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/calendar_view"
+        android:background="@color/colorPrimary"
+        app:mcv_headerTextAppearance="@color/whiteColor"
+        app:mcv_weekDayTextAppearance="@color/whiteColor"
+        app:mcv_dateTextAppearance="@color/whiteColor"
+        app:mcv_arrowColor="@color/whiteColor"
+        app:mcv_titleAnimationOrientation="horizontal"
+        app:mcv_calendarMode="month"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:mcv_showOtherDates="all"
+        app:mcv_selectionColor="#00F"
+        />-->
+
+    <CalendarView
+        android:id="@+id/calendar_view"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:showWeekNumber="false"/>
+
+    <View
+        android:id="@+id/horizontalDivider"
+        android:layout_below="@+id/calendar_view"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="?android:attr/listDivider"/>
+
+    <ScrollView
+        android:id="@+id/dateDetails"
+        android:layout_below="@+id/horizontalDivider"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:id="@+id/detailsContainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/trainingDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:text=""
+                android:layout_gravity="center"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentLeft="true"
+                android:layout_marginStart="12dp"
+                android:layout_marginLeft="12dp"
+                android:layout_marginTop="12dp" />
+
+        </RelativeLayout>
+
+    </ScrollView>
 
 </RelativeLayout>

@@ -20,7 +20,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:textSize="18sp"
-        android:text="24/03/2017 - Sexta: A - Peitoral/Dorsal"
+        android:text="31/03/2017 - Sexta: A - Peitoral/Dorsal"
         android:layout_marginBottom="@dimen/activity_vertical_margin"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true" />

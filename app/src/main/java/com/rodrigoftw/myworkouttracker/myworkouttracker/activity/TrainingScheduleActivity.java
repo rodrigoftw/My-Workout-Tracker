@@ -12,19 +12,11 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.ImageView;
-
-import com.bumptech.glide.Glide;
-import com.bumptech.glide.load.resource.drawable.GlideDrawable;
-import com.bumptech.glide.request.RequestListener;
-import com.bumptech.glide.request.target.GlideDrawableImageViewTarget;
-import com.bumptech.glide.request.target.Target;
 import com.github.aakira.expandablelayout.Utils;
 import com.rodrigoftw.myworkouttracker.myworkouttracker.R;
 import com.rodrigoftw.myworkouttracker.myworkouttracker.adapter.ExerciseAdapter;
 import com.rodrigoftw.myworkouttracker.myworkouttracker.model.ItemModel;
 import com.rodrigoftw.myworkouttracker.myworkouttracker.util.DividerItemDecoration;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -61,7 +53,13 @@ public class TrainingScheduleActivity extends BaseActivity
         recyclerView.addItemDecoration(new DividerItemDecoration(this));
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        ImageView imageview = (ImageView) findViewById(R.id.exerciseImage);
+        /*ImageView imageview = (ImageView) findViewById(R.id.exerciseImage);
+
+        Glide.with(getApplicationContext())
+                .load("https://www.bodybuilding.com/exercises/exerciseImages/sequences/360/Male/l/360_1.jpg")*//*https://www.bodybuilding.com/exercises/exerciseImages/sequences/360/Male/l/360_1.jpg")*//*
+                *//*.placeholder(R.drawable.gif1benchpress)*//*
+                *//*.crossFade()*//*
+                .into(imageview);*/
 
         /*Glide.with(ctx)
                 .load("http://www.exrx.net/AnimatedEx/PectoralSternal/BBBenchPress.gif")
