@@ -1,42 +1,49 @@
 package com.rodrigoftw.myworkouttracker.myworkouttracker.activity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
+import android.support.design.widget.TabLayout;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.GravityCompat;
+import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.CalendarView;
-import android.widget.TextView;
 
 import com.rodrigoftw.myworkouttracker.myworkouttracker.R;
+import com.rodrigoftw.myworkouttracker.myworkouttracker.fragment.MeasurementChartFragment;
+import com.rodrigoftw.myworkouttracker.myworkouttracker.fragment.WeightChartFragment;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.Locale;
+import java.util.ArrayList;
+import java.util.List;
 
-import static com.rodrigoftw.myworkouttracker.myworkouttracker.util.AnimationUtils.animate;
+public class HistoryActivity extends BaseActivity
+        implements NavigationView.OnNavigationItemSelectedListener {
 
+    public static void startActivity(Context context) {
+        context.startActivity(new Intent(context, HistoryActivity.class));
+    }
 
-public class CalendarActivity extends BaseActivity implements NavigationView.OnNavigationItemSelectedListener, CalendarView.OnDateChangeListener {
-
-    private static final String DATE_TEMPLATE = "dd/MM/yyyy";
-    private static final String MONTH_TEMPLATE = "MMMM yyyy";
-    CalendarView calendar = null;
-    TextView trainingDate;
+    private TabLayout tabLayout;
+    private ViewPager viewPager;
+    private Context ctx;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_calendar);
+        setContentView(R.layout.activity_history);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         toolbar.setTitleTextColor(android.graphics.Color.WHITE);
-        setTitle(R.string.calendar_title);
+        setTitle(R.string.history_title);
+
+        this.ctx = this;
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -47,26 +54,48 @@ public class CalendarActivity extends BaseActivity implements NavigationView.OnN
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
-        calendar = (CalendarView) findViewById(R.id.calendar_view);
-        calendar.setOnDateChangeListener(this);
-        calendar.setFirstDayOfWeek(2);
-        calendar.setShowWeekNumber(false);
+        viewPager = (ViewPager) findViewById(R.id.viewpager);
+        setupViewPager(viewPager);
 
-        trainingDate = (TextView) findViewById(R.id.trainingDate);
-        trainingDate.setText(String.format("%s - Treino de Peitoral/Dorsal", formatDate(DATE_TEMPLATE, new Date(System.currentTimeMillis()))));
+        tabLayout = (TabLayout) findViewById(R.id.tabs);
+        tabLayout.setupWithViewPager(viewPager);
 
-        animate(trainingDate, getApplicationContext());
     }
 
-    @Override
-    public void onSelectedDayChange(CalendarView view, int year, int monthOfYear, int dayOfMonth) {
-
-        /*Calendar then = new GregorianCalendar(year, monthOfYear, dayOfMonth);
-        Toast.makeText(this, then.getTime().toString(), Toast.LENGTH_LONG).show();*/
+    private void setupViewPager(ViewPager viewPager) {
+        ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
+        adapter.addFragment(new WeightChartFragment(), "Peso");
+        adapter.addFragment(new MeasurementChartFragment(), "Medidas");
+        viewPager.setAdapter(adapter);
     }
 
-    private String formatDate(@NonNull String dateTemplate, @NonNull Date date) {
-        return new SimpleDateFormat(dateTemplate, Locale.getDefault()).format(date);
+    class ViewPagerAdapter extends FragmentPagerAdapter {
+        private final List<Fragment> mFragmentList = new ArrayList<>();
+        private final List<String> mFragmentTitleList = new ArrayList<>();
+
+        public ViewPagerAdapter(FragmentManager manager) {
+            super(manager);
+        }
+
+        @Override
+        public Fragment getItem(int position) {
+            return mFragmentList.get(position);
+        }
+
+        @Override
+        public int getCount() {
+            return mFragmentList.size();
+        }
+
+        public void addFragment(Fragment fragment, String title) {
+            mFragmentList.add(fragment);
+            mFragmentTitleList.add(title);
+        }
+
+        @Override
+        public CharSequence getPageTitle(int position) {
+            return mFragmentTitleList.get(position);
+        }
     }
 
     @Override
@@ -108,13 +137,13 @@ public class CalendarActivity extends BaseActivity implements NavigationView.OnN
         int id = item.getItemId();
 
         if (id == R.id.nav_schedule) {
-            startActivity(new Intent(CalendarActivity.this,TrainingScheduleActivity.class));
+            startActivity(new Intent(HistoryActivity.this, TrainingScheduleActivity.class));
             finish();
         } else if (id == R.id.nav_history) {
-            startActivity(new Intent(CalendarActivity.this, HistoryActivity.class));
-            finish();
-        } else if (id == R.id.nav_calendar) {
 
+        } else if (id == R.id.nav_calendar) {
+            startActivity(new Intent(HistoryActivity.this, CalendarActivity.class));
+            finish();
         } else if (id == R.id.nav_share) {
 
         } else if (id == R.id.nav_send) {

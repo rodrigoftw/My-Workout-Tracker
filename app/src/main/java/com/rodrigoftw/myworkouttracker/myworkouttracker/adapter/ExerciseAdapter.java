@@ -1,109 +1,88 @@
 package com.rodrigoftw.myworkouttracker.myworkouttracker.adapter;
 
-import android.animation.ObjectAnimator;
 import android.content.Context;
-import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.RecyclerView;
-import android.util.SparseBooleanArray;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.RelativeLayout;
+import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.github.aakira.expandablelayout.ExpandableLayout;
-import com.github.aakira.expandablelayout.ExpandableLayoutListenerAdapter;
-import com.github.aakira.expandablelayout.ExpandableLinearLayout;
-import com.github.aakira.expandablelayout.Utils;
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.rodrigoftw.myworkouttracker.myworkouttracker.R;
-import com.rodrigoftw.myworkouttracker.myworkouttracker.model.ItemModel;
+import com.rodrigoftw.myworkouttracker.myworkouttracker.model.Exercise;
 
-import java.util.List;
+import java.util.ArrayList;
 
+/**
+ * Created by Rodrigo on 14/04/2017.
+ */
 
-public class ExerciseAdapter extends RecyclerView.Adapter<ExerciseAdapter.ViewHolder> {
+public class ExerciseAdapter extends RecyclerView.Adapter<ExerciseAdapter.ExerciseViewHolder> {
+    private LayoutInflater mInflater;
+    private ArrayList<Exercise> mData = new ArrayList<Exercise>();
+    private Context ctx;
 
-    private final List<ItemModel> data;
-    private Context context;
-    private SparseBooleanArray expandState = new SparseBooleanArray();
-
-    public ExerciseAdapter(final List<ItemModel> data) {
-        this.data = data;
-        for (int i = 0; i < data.size(); i++) {
-            expandState.append(i, false);
-        }
+    public ExerciseAdapter(Context ctx, ArrayList<Exercise> mData) {
+        this.ctx = ctx;
+        this.mData = mData;
+        mInflater = (LayoutInflater) ctx.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     }
 
     @Override
-    public ViewHolder onCreateViewHolder(final ViewGroup parent, final int viewType) {
-        this.context = parent.getContext();
-        return new ViewHolder(LayoutInflater.from(context)
-                .inflate(R.layout.exercise_list_item, parent, false));
+    public ExerciseAdapter.ExerciseViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        View view = mInflater.inflate(R.layout.adapter_exercise_item, parent, false);
+        ExerciseAdapter.ExerciseViewHolder holder = new ExerciseAdapter.ExerciseViewHolder(view);
+        return holder;
     }
 
     @Override
-    public void onBindViewHolder(final ViewHolder holder, final int position) {
-        final ItemModel item = data.get(position);
-        holder.setIsRecyclable(false);
-        holder.textView.setText(item.description);
-        holder.itemView.setBackgroundColor(ContextCompat.getColor(context, item.colorId1));
-        holder.expandableLayout.setInRecyclerView(true);
-        holder.expandableLayout.setBackgroundColor(ContextCompat.getColor(context, item.colorId2));
-        holder.expandableLayout.setInterpolator(item.interpolator);
-        holder.expandableLayout.setExpanded(expandState.get(position));
-        holder.expandableLayout.setListener(new ExpandableLayoutListenerAdapter() {
-            @Override
-            public void onPreOpen() {
-                createRotateAnimator(holder.buttonLayout, 0f, 180f).start();
-                expandState.put(position, true);
-            }
-
-            @Override
-            public void onPreClose() {
-                createRotateAnimator(holder.buttonLayout, 180f, 0f).start();
-                expandState.put(position, false);
-            }
-        });
-
-        holder.buttonLayout.setRotation(expandState.get(position) ? 180f : 0f);
-        holder.buttonLayout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(final View v) {
-                onClickButton(holder.expandableLayout);
-            }
-        });
-    }
-
-    private void onClickButton(final ExpandableLayout expandableLayout) {
-        expandableLayout.toggle();
+    public long getItemId(int position) {
+        return position;
     }
 
     @Override
     public int getItemCount() {
-        return data.size();
+        return mData.size();
     }
 
-    public static class ViewHolder extends RecyclerView.ViewHolder {
-        public TextView textView;
-        public RelativeLayout buttonLayout;
-        /**
-         * You must use the ExpandableLinearLayout in the recycler view.
-         * The ExpandableRelativeLayout doesn't work.
-         */
-        public ExpandableLinearLayout expandableLayout;
+    @Override
+    public void onBindViewHolder(ExerciseAdapter.ExerciseViewHolder holder, final int position) {
+        Exercise exercise = mData.get(position);
 
-        public ViewHolder(View v) {
-            super(v);
-            textView = (TextView) v.findViewById(R.id.textView);
-            buttonLayout = (RelativeLayout) v.findViewById(R.id.button);
-            expandableLayout = (ExpandableLinearLayout) v.findViewById(R.id.expandableLayout);
+        Glide.clear(holder.imageExercise);
+        Glide.with(ctx)
+                .load(exercise.getImageExercise())
+                .error( R.layout.layout_missing_exercise_image )
+                .diskCacheStrategy(DiskCacheStrategy.SOURCE)
+                .into(holder.imageExercise);
+
+        holder.nameExercise.setText(exercise.getNameExercise());
+        /*holder.setsExercise.setText(exercise.getSetsExercise());*/
+        /*holder.repsExercise.setText(exercise.getRepsExercise());*/
+        holder.restExercise.setText(exercise.getRestExercise());
+    }
+
+
+    public static class ExerciseViewHolder extends RecyclerView.ViewHolder {
+        public ImageView imageExercise;
+        public TextView nameExercise;
+        public TextView setsExercise;
+        public TextView repsExercise;
+        public TextView restExercise;
+
+        private View view;
+        public ExerciseViewHolder(View view) {
+            super(view);
+            this.view = view;
+
+            imageExercise = (ImageView) view.findViewById(R.id.exerciseImage);
+            nameExercise = (TextView) view.findViewById(R.id.nameExercise);
+            setsExercise = (TextView) view.findViewById(R.id.setsExercise);
+            repsExercise = (TextView) view.findViewById(R.id.repsExercise);
+            restExercise = (TextView) view.findViewById(R.id.restExercise);
+
         }
-    }
-
-    public ObjectAnimator createRotateAnimator(final View target, final float from, final float to) {
-        ObjectAnimator animator = ObjectAnimator.ofFloat(target, "rotation", from, to);
-        animator.setDuration(300);
-        animator.setInterpolator(Utils.createInterpolator(Utils.LINEAR_INTERPOLATOR));
-        return animator;
     }
 }

@@ -13,64 +13,15 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"-->
 
-    <!--<TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Calendário"
-        android:textSize="20sp"
-        android:layout_gravity="center"
-        android:id="@+id/textView"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true" />-->
-
-    <!--<io.blackbox_vision.materialcalendarview.view.CalendarView
-        android:id="@+id/calendar_view"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:elevation="4dp"
-        android:background="@color/colorPrimary"
-        app:calendarIsMultiSelectDayEnabled="false"
-        app:calendarIsOverflowDatesVisible="true"
-        app:calendarBackgroundColor="@color/colorPrimary"
-        app:calendarTitleTextColor="@android:color/white"
-        app:calendarCurrentDayTextColor="@android:color/white"
-        app:calendarDayOfWeekTextColor="@android:color/white"
-        app:calendarDisabledDayBackgroundColor="@color/colorPrimary"
-        app:calendarDisabledDayTextColor="@android:color/darker_gray"
-        app:calendarSelectedDayBackgroundColor="@color/colorAccent"
-        app:calendarTitleBackgroundColor="@color/colorPrimary"
-        app:calendarWeekBackgroundColor="@color/colorPrimary"
-        app:calendarCurrentDayBackgroundColor="@color/colorAccent"
-        app:calendarWeekendTextColor="@android:color/white"
-        app:calendarButtonBackgroundColor="@android:color/white"
-        app:calendarWeekendDays="saturday|sunday"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true">
-    </io.blackbox_vision.materialcalendarview.view.CalendarView>-->
-
-    <!--<com.prolificinteractive.materialcalendarview.MaterialCalendarView
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:id="@+id/calendar_view"
-        android:background="@color/colorPrimary"
-        app:mcv_headerTextAppearance="@color/whiteColor"
-        app:mcv_weekDayTextAppearance="@color/whiteColor"
-        app:mcv_dateTextAppearance="@color/whiteColor"
-        app:mcv_arrowColor="@color/whiteColor"
-        app:mcv_titleAnimationOrientation="horizontal"
-        app:mcv_calendarMode="month"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:mcv_showOtherDates="all"
-        app:mcv_selectionColor="#00F"
-        />-->
-
     <CalendarView
         android:id="@+id/calendar_view"
         xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary"
+        android:weekNumberColor="@color/whiteColor"
+        android:firstDayOfWeek="2"
+        android:selectedWeekBackgroundColor="@color/whiteColor"
         android:showWeekNumber="false"/>
 
     <View
@@ -99,9 +50,7 @@
                 android:text=""
                 android:layout_gravity="center"
                 android:layout_alignParentStart="true"
-                android:layout_alignParentLeft="true"
                 android:layout_marginStart="12dp"
-                android:layout_marginLeft="12dp"
                 android:layout_marginTop="12dp" />
 
         </RelativeLayout>

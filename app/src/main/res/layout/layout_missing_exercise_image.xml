@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.joanzapata.iconify.widget.IconTextView
+        android:id="@+id/missingImageIcon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="{fa-window-close}"
+        android:textSize="26sp"
+        android:textColor="@color/material_red_A700"
+        android:layout_centerInParent="true" />
+
+    <TextView
+        android:id="@+id/missingImageText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/missingImageIcon"
+        android:text="Imagem indisponível!"
+        android:textColor="@color/material_red_A700"
+        android:layout_centerInParent="true"/>
+</RelativeLayout>

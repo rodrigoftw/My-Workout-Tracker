@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/cv"
+    app:cardElevation="4dp"
+    app:cardCornerRadius="4dp"
+    app:cardPreventCornerOverlap="true"
+    android:layout_marginTop="8dp"
+    android:layout_marginBottom="8dp"
+    android:layout_marginLeft="@dimen/activity_horizontal_margin"
+    android:layout_marginRight="@dimen/activity_horizontal_margin"
+    android:layout_marginStart="@dimen/activity_horizontal_margin"
+    android:layout_marginEnd="@dimen/activity_horizontal_margin">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:id="@+id/nameExerciseLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_gravity="center">
+
+            <TextView
+                android:id="@+id/nameExercise"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:padding="@dimen/margin_small"
+                android:text="Nome do Exercício"
+                android:textColor="@android:color/black"
+                android:textSize="16sp"
+                fontPath="fonts/Quicksand-Light.ttf" />
+
+            <View
+                android:id="@+id/headerDivider"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="?android:attr/listDivider"
+                android:layout_below="@+id/nameExercise"
+                android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                android:layout_marginRight="@dimen/activity_horizontal_margin"
+                android:layout_marginStart="@dimen/activity_horizontal_margin"
+                android:layout_marginEnd="@dimen/activity_horizontal_margin"/>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/exerciseInfoLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/footerDivider"
+            android:layout_below="@+id/nameExerciseLayout"
+            android:layout_marginTop="8dp">
+
+            <RelativeLayout
+                android:id="@+id/exerciseInfo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true">
+
+                <TextView
+                    android:id="@+id/setsExercise"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="start|center_vertical"
+                    android:paddingLeft="@dimen/activity_horizontal_margin"
+                    android:paddingRight="0dp"
+                    android:paddingStart="@dimen/activity_horizontal_margin"
+                    android:paddingEnd="0dp"
+                    android:text="Séries: 3"
+                    android:textColor="@android:color/black"
+                    android:textSize="16sp"
+                    fontPath="fonts/Quicksand-Light.ttf"/>
+
+                <TextView
+                    android:id="@+id/repsExercise"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/setsExercise"
+                    android:gravity="start|center_vertical"
+                    android:paddingLeft="@dimen/activity_horizontal_margin"
+                    android:paddingRight="0dp"
+                    android:paddingStart="@dimen/activity_horizontal_margin"
+                    android:paddingEnd="0dp"
+                    android:text="Repetições: 10"
+                    android:textColor="@android:color/black"
+                    android:textSize="16sp"
+                    fontPath="fonts/Quicksand-Light.ttf"/>
+
+                <TextView
+                    android:id="@+id/restExercise"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/repsExercise"
+                    android:gravity="start|center_vertical"
+                    android:paddingLeft="@dimen/activity_horizontal_margin"
+                    android:paddingRight="0dp"
+                    android:paddingStart="@dimen/activity_horizontal_margin"
+                    android:paddingEnd="0dp"
+                    android:text="Descanso: 1 minuto"
+                    android:textColor="@android:color/black"
+                    android:textSize="16sp"
+                    fontPath="fonts/Quicksand-Light.ttf"/>
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_toEndOf="@+id/exerciseInfo"
+                android:layout_toRightOf="@+id/exerciseInfo">
+
+                <ImageView
+                    android:id="@+id/exerciseImage"
+                    android:layout_width="140dp"
+                    android:layout_height="100dp"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginRight="8dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:contentDescription="@string/image_exercise_description" />
+                <!--android:scaleType="fitCenter"-->
+
+            </RelativeLayout>
+
+        </RelativeLayout>
+
+        <View
+            android:id="@+id/footerDivider"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_above="@+id/startExerciseButton"
+            android:background="?android:attr/listDivider"/>
+
+        <RelativeLayout
+            android:id="@+id/startExerciseButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="@dimen/margin_small"
+            android:gravity="center_horizontal"
+            android:clickable="true"
+            android:background="?android:attr/selectableItemBackground"
+            android:layout_alignParentBottom="true">
+
+            <TextView
+                android:id="@+id/startExerciseLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Iniciar exercício"
+                android:textColor="@android:color/black"
+                android:layout_centerVertical="true"
+                android:textSize="16sp"
+                fontPath="fonts/Quicksand-Light.ttf"/>
+
+            <com.joanzapata.iconify.widget.IconTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/icon_start_exercise"
+                android:textColor="@android:color/black"
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@+id/startExerciseLabel"
+                android:layout_toEndOf="@+id/startExerciseLabel"
+                android:layout_marginStart="8dp"
+                android:layout_marginLeft="8dp"
+                fontPath="fonts/Quicksand-Light.ttf"/>
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+</android.support.v7.widget.CardView>
+

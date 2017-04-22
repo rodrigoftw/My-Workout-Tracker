@@ -6,6 +6,10 @@
     <string name="drawer_open">Abrir</string>
     <string name="drawer_close">Fechar</string>
 
+    <!-- Icons -->
+    <string name="icon_start_exercise">{fa-play}</string>
+    <string name="icon_missing_exercise_image">{fa-window-close}</string>
+
     <!-- Login Activity -->
     <string name="email_label">E-mail</string>
     <string name="password_label">Senha</string>
@@ -21,6 +25,7 @@
     <string name="nav_title_other">Outros</string>
     <string name="nav_item_share">Compartilhar</string>
     <string name="nav_item_about">Sobre</string>
+    <string name="nav_item_logout">Sair</string>
 
     <!-- Activities' Titles-->
     <string name="home_title">Ficha</string>
@@ -37,5 +42,8 @@
     <string name="title_calendar">Calendário</string>
     <string name="title_history">Meu Histórico</string>
     <string name="title_home">Minha Ficha</string>
+
+    <!-- Image Descriptions -->
+    <string name="image_exercise_description">Imagem do Exercício</string>
 
 </resources>
