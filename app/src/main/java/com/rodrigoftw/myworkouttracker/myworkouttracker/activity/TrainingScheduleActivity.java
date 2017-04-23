@@ -1,25 +1,37 @@
 package com.rodrigoftw.myworkouttracker.myworkouttracker.activity;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.app.AlertDialog;
+import android.support.v7.view.ContextThemeWrapper;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.MenuItem;
+import android.widget.TextView;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.rodrigoftw.myworkouttracker.myworkouttracker.R;
 import com.rodrigoftw.myworkouttracker.myworkouttracker.adapter.ExerciseAdapter;
 import com.rodrigoftw.myworkouttracker.myworkouttracker.model.Exercise;
 
 import java.util.ArrayList;
+import java.util.Date;
+
+import static com.rodrigoftw.myworkouttracker.myworkouttracker.R.id.currentTrainingDateTextView;
 
 public class TrainingScheduleActivity extends BaseActivity implements NavigationView.OnNavigationItemSelectedListener {
+
+    private static final String DATE_TEMPLATE = "dd/MM/yyyy";
 
     public static void startActivity(Context context) {
         context.startActivity(new Intent(context, TrainingScheduleActivity.class));
@@ -27,6 +39,7 @@ public class TrainingScheduleActivity extends BaseActivity implements Navigation
 
     RecyclerView recyclerView;
     ExerciseAdapter adapter;
+    TextView trainingDate;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,7 +50,7 @@ public class TrainingScheduleActivity extends BaseActivity implements Navigation
         toolbar.setTitleTextColor(android.graphics.Color.WHITE);
         setTitle(R.string.home_title);
 
-        Context ctx = this;
+        this.ctx = this;
 
         firebaseAuth = firebaseAuth.getInstance();
 
@@ -45,7 +58,11 @@ public class TrainingScheduleActivity extends BaseActivity implements Navigation
             Log.i("verifyUser", "Usuário logado");
         } else {
             Log.i("verifyUser", "Usuário não logado");
+            finish();
+            startActivity(new Intent(this, LoginActivity.class));
         }
+
+        FirebaseUser user = firebaseAuth.getCurrentUser();
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -60,6 +77,8 @@ public class TrainingScheduleActivity extends BaseActivity implements Navigation
         //recyclerView.addItemDecoration(new DividerItemDecoration(this));
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
+        trainingDate = (TextView) findViewById(currentTrainingDateTextView);
+        trainingDate.setText(String.format("%s - Treino de Peitoral/Dorsal", formatDate(DATE_TEMPLATE, new Date(System.currentTimeMillis()))));
 
         final ArrayList<Exercise> exercise = new ArrayList<>();
 
@@ -221,5 +240,44 @@ public class TrainingScheduleActivity extends BaseActivity implements Navigation
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    private void logOutDialog(final Context ctx) {
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(new ContextThemeWrapper(ctx, R.style.AlertDialogCustom));
+        builder.setTitle("Tem certeza de que deseja sair?")
+                //.setMessage("O e-mail ou a senha inseridos não foram encontrados, tente novamente.")
+                .setPositiveButton("Sim", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int id) {
+                        dialog.dismiss();
+                        /*firebaseAuth.signOut();
+                        finish();
+                        startActivity(new Intent(ctx, LoginActivity.class));*/
+
+                        // this listener will be called when there is change in firebase user session
+                        FirebaseAuth.AuthStateListener authListener = new FirebaseAuth.AuthStateListener() {
+                            @Override
+                            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
+                                FirebaseUser user = firebaseAuth.getCurrentUser();
+                                if (user == null) {
+                                    // user auth state is changed - user is null
+                                    // launch login activity
+                                    startActivity(new Intent(ctx, LoginActivity.class));
+                                    finish();
+                                }
+                            }
+                        };
+                    }
+                })
+                .setNegativeButton("Não", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int id) {
+                        dialog.dismiss();
+                    }
+                });
+        final AlertDialog alert = builder.create();
+        alert.show();
+
     }
 }

@@ -17,7 +17,7 @@
     <string name="forgot_password_label">Esqueceu sua senha?</string>
 
     <!-- Forgot Password Activity -->
-    <string name="recover_password__instructions_label">Insira seu e-mail para receber uma nova senha. Você poderá alterá-la após fazer login.</string>
+    <string name="recover_password__instructions_label">Insira seu e-mail cadastrado no sistema para receber instruções. Você poderá alterar sua senha clicando no link que lhe enviaremos.</string>
     <string name="recover_password_label">Recuperar senha</string>
 
     <string name="action_settings">Configurações</string>

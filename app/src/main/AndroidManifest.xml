@@ -30,7 +30,7 @@
 
         <activity android:name=".activity.ForgotPasswordActivity"
             android:label="@string/forgot_password_title"
-            android:theme="@style/AppTheme.NoActionBar"
+            android:theme="@style/AppTheme"
             android:configChanges="orientation"
             android:screenOrientation="portrait"/>
 

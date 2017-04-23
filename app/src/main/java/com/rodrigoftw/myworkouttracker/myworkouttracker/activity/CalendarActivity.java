@@ -1,13 +1,17 @@
 package com.rodrigoftw.myworkouttracker.myworkouttracker.activity;
 
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.app.AlertDialog;
+import android.support.v7.view.ContextThemeWrapper;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.CalendarView;
@@ -15,9 +19,7 @@ import android.widget.TextView;
 
 import com.rodrigoftw.myworkouttracker.myworkouttracker.R;
 
-import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.Locale;
 
 import static com.rodrigoftw.myworkouttracker.myworkouttracker.util.AnimationUtils.animate;
 
@@ -37,6 +39,18 @@ public class CalendarActivity extends BaseActivity implements NavigationView.OnN
         setSupportActionBar(toolbar);
         toolbar.setTitleTextColor(android.graphics.Color.WHITE);
         setTitle(R.string.calendar_title);
+
+        this.ctx = this;
+
+        firebaseAuth = firebaseAuth.getInstance();
+
+        if (firebaseAuth.getCurrentUser() != null){
+            Log.i("verifyUser", "Usuário logado");
+        } else {
+            Log.i("verifyUser", "Usuário não logado");
+            finish();
+            startActivity(new Intent(this, LoginActivity.class));
+        }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -63,10 +77,6 @@ public class CalendarActivity extends BaseActivity implements NavigationView.OnN
 
         /*Calendar then = new GregorianCalendar(year, monthOfYear, dayOfMonth);
         Toast.makeText(this, then.getTime().toString(), Toast.LENGTH_LONG).show();*/
-    }
-
-    private String formatDate(@NonNull String dateTemplate, @NonNull Date date) {
-        return new SimpleDateFormat(dateTemplate, Locale.getDefault()).format(date);
     }
 
     @Override
@@ -129,5 +139,30 @@ public class CalendarActivity extends BaseActivity implements NavigationView.OnN
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    private void logOutDialog(final Context ctx) {
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(new ContextThemeWrapper(ctx, R.style.AlertDialogCustom));
+        builder.setTitle("Tem certeza de que deseja sair?")
+                //.setMessage("O e-mail ou a senha inseridos não foram encontrados, tente novamente.")
+                .setPositiveButton("Sim", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int id) {
+                        dialog.dismiss();
+                        firebaseAuth.signOut();
+                        finish();
+                        startActivity(new Intent(ctx, LoginActivity.class));
+                    }
+                })
+                .setNegativeButton("Não", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int id) {
+                        dialog.dismiss();
+                    }
+                });
+        final AlertDialog alert = builder.create();
+        alert.show();
+
     }
 }

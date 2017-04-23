@@ -8,6 +8,7 @@ import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.PersistableBundle;
+import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -23,6 +24,10 @@ import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.rodrigoftw.myworkouttracker.myworkouttracker.R;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
 
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
@@ -155,7 +160,11 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
         return true;
     }
 
-    protected void logOutDialog(final Context ctx) {
+    protected String formatDate(@NonNull String dateTemplate, @NonNull Date date) {
+        return new SimpleDateFormat(dateTemplate, Locale.getDefault()).format(date);
+    }
+
+    private void logOutDialog(final Context ctx) {
 
         AlertDialog.Builder builder = new AlertDialog.Builder(new ContextThemeWrapper(ctx, R.style.AlertDialogCustom));
         builder.setTitle("Tem certeza de que deseja sair?")
