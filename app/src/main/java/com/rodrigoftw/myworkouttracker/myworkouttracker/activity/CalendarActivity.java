@@ -82,7 +82,7 @@ public class CalendarActivity extends BaseActivity implements NavigationView.OnN
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_config, menu);
+        //getMenuInflater().inflate(R.menu.menu_config, menu);
         return true;
     }
 
@@ -120,7 +120,10 @@ public class CalendarActivity extends BaseActivity implements NavigationView.OnN
         } else if (id == R.id.nav_send) {
 
         } else if (id == R.id.nav_logout) {
-
+            logOutDialog(ctx);
+            /*firebaseAuth.signOut();*/
+            /*startActivity(new Intent(CalendarActivity.this, LoginActivity.class));
+            finish();*/
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

@@ -10,6 +10,7 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.MenuItem;
 
 import com.rodrigoftw.myworkouttracker.myworkouttracker.R;
@@ -37,6 +38,14 @@ public class TrainingScheduleActivity extends BaseActivity implements Navigation
         setTitle(R.string.home_title);
 
         Context ctx = this;
+
+        firebaseAuth = firebaseAuth.getInstance();
+
+        if (firebaseAuth.getCurrentUser() != null){
+            Log.i("verifyUser", "Usuário logado");
+        } else {
+            Log.i("verifyUser", "Usuário não logado");
+        }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -203,7 +212,10 @@ public class TrainingScheduleActivity extends BaseActivity implements Navigation
         } else if (id == R.id.nav_send) {
 
         } else if (id == R.id.nav_logout) {
-
+            logOutDialog(ctx);
+            /*firebaseAuth.signOut();*/
+            /*startActivity(new Intent(TrainingScheduleActivity.this, LoginActivity.class));
+            finish();*/
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

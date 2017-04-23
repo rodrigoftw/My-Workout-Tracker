@@ -1,6 +1,7 @@
 package com.rodrigoftw.myworkouttracker.myworkouttracker.activity;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.content.pm.PackageManager;
@@ -10,7 +11,9 @@ import android.os.PersistableBundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.view.ContextThemeWrapper;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
@@ -18,6 +21,7 @@ import android.view.MenuItem;
 import android.view.WindowManager;
 import android.widget.TextView;
 
+import com.google.firebase.auth.FirebaseAuth;
 import com.rodrigoftw.myworkouttracker.myworkouttracker.R;
 
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
@@ -31,6 +35,7 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
     protected Context ctx;
     protected Toolbar toolbar;
     protected TextView toolbarTitle;
+    protected FirebaseAuth firebaseAuth;
 
     @Override
     public void onCreate(Bundle savedInstanceState, PersistableBundle persistentState) {
@@ -101,7 +106,7 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_config, menu);
+        //getMenuInflater().inflate(R.menu.menu_config, menu);
         return true;
     }
 
@@ -140,11 +145,38 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
         } else if (id == R.id.nav_send) {
 
         } else if (id == R.id.nav_logout) {
-
+            logOutDialog(ctx);
+            /*startActivity(new Intent(BaseActivity.this, LoginActivity.class));
+            finish();*/
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    protected void logOutDialog(final Context ctx) {
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(new ContextThemeWrapper(ctx, R.style.AlertDialogCustom));
+        builder.setTitle("Tem certeza de que deseja sair?")
+                //.setMessage("O e-mail ou a senha inseridos não foram encontrados, tente novamente.")
+                .setPositiveButton("Sim", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int id) {
+                        dialog.dismiss();
+                        firebaseAuth.signOut();
+                        finish();
+                        startActivity(new Intent(ctx, LoginActivity.class));
+                    }
+                })
+                .setNegativeButton("Não", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int id) {
+                        dialog.dismiss();
+                    }
+                });
+        final AlertDialog alert = builder.create();
+        alert.show();
+
     }
 }

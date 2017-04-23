@@ -7,19 +7,25 @@
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
         <item name="colorControlActivated">#445963</item>
-        <item name="android:actionOverflowButtonStyle">@style/CustomButtonOverflow</item>
         <item name="windowNoTitle">true</item>
         <item name="windowActionBar">false</item>
         <item name="drawerArrowStyle">@style/DrawerArrowStyle</item>
     </style>
-
+    <!--<item name="android:actionOverflowButtonStyle">@style/CustomButtonOverflow</item>-->
     <!-- Style to replace actionbar overflow icon. set item 'android:actionOverflowButtonStyle' in AppTheme -->
-    <style name="CustomButtonOverflow" parent="android:style/Widget.Holo.Light.ActionButton.Overflow">
+    <!--<style name="CustomButtonOverflow" parent="android:style/Widget.Holo.Light.ActionButton.Overflow">
         <item name="android:src">@drawable/ic_menu_settings</item>
-    </style>
+    </style>-->
 
     <style name="LoginTheme" parent="AppTheme">
         <item name="colorControlActivated">#445963</item>
+    </style>
+
+    <style name="AlertDialogCustom" parent="Theme.AppCompat.Light.Dialog.Alert">
+        <item name="colorAccent">@color/colorPrimary</item>
+        <item name="android:textColor">@color/colorPrimary</item>
+        <item name="android:textColorAlertDialogListItem">@color/colorPrimary</item>
+        <item name="android:background">@android:color/white</item>
     </style>
 
     <style name="AppTheme.NoActionBar">

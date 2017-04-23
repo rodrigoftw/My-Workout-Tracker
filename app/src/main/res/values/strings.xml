@@ -16,6 +16,10 @@
     <string name="login_label">Entrar</string>
     <string name="forgot_password_label">Esqueceu sua senha?</string>
 
+    <!-- Forgot Password Activity -->
+    <string name="recover_password__instructions_label">Insira seu e-mail para receber uma nova senha. Você poderá alterá-la após fazer login.</string>
+    <string name="recover_password_label">Recuperar senha</string>
+
     <string name="action_settings">Configurações</string>
     <string name="profile_icon">Ícone de Perfil</string>
 
@@ -31,6 +35,7 @@
     <string name="home_title">Ficha</string>
     <string name="history_title">Histórico</string>
     <string name="calendar_title">Calendário</string>
+    <string name="forgot_password_title">Recuperação de Senha</string>
 
     <!-- navigation drawer item labels  -->
     <string-array name="nav_drawer_labels">
