@@ -33,6 +33,9 @@ public class HistoryActivity extends BaseActivity implements NavigationView.OnNa
         context.startActivity(new Intent(context, HistoryActivity.class));
     }
 
+    private TabLayout tabLayout;
+    private ViewPager viewPager;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -63,10 +66,10 @@ public class HistoryActivity extends BaseActivity implements NavigationView.OnNa
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
-        ViewPager viewPager = (ViewPager) findViewById(R.id.viewpager);
+        viewPager = (ViewPager) findViewById(R.id.viewpager);
         setupViewPager(viewPager);
 
-        TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
+        tabLayout = (TabLayout) findViewById(R.id.tabs);
         tabLayout.setupWithViewPager(viewPager);
 
     }

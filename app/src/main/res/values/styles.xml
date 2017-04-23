@@ -11,6 +11,19 @@
         <item name="windowActionBar">false</item>
         <item name="drawerArrowStyle">@style/DrawerArrowStyle</item>
     </style>
+
+    <style name="ForgotPasswordTheme" parent="AppTheme">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/whiteColor</item>
+        <item name="colorControlNormal">@color/whiteColor</item>
+        <item name="colorControlActivated">#445963</item>
+        <item name="windowNoTitle">true</item>
+        <item name="windowActionBar">false</item>
+        <item name="drawerArrowStyle">@style/DrawerArrowStyle</item>
+    </style>
+
     <!--<item name="android:actionOverflowButtonStyle">@style/CustomButtonOverflow</item>-->
     <!-- Style to replace actionbar overflow icon. set item 'android:actionOverflowButtonStyle' in AppTheme -->
     <!--<style name="CustomButtonOverflow" parent="android:style/Widget.Holo.Light.ActionButton.Overflow">
