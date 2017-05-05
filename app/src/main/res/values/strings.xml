@@ -48,7 +48,9 @@
     <string name="title_history">Meu Histórico</string>
     <string name="title_home">Minha Ficha</string>
 
-    <!-- Image Descriptions -->
+    <!-- Image Description -->
     <string name="image_exercise_description">Imagem do Exercício</string>
+
+    <string name="forgot_password_success">O link de redefinição de senha foi enviado para o seu email.</string>
 
 </resources>

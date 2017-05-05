@@ -157,13 +157,14 @@
                 android:id="@+id/startExerciseLabel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textAllCaps="true"
                 android:text="Iniciar exercício"
                 android:textColor="@android:color/black"
                 android:layout_centerVertical="true"
                 android:textSize="16sp"
                 fontPath="fonts/Quicksand-Light.ttf"/>
 
-            <com.joanzapata.iconify.widget.IconTextView
+            <!--<com.joanzapata.iconify.widget.IconTextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/icon_start_exercise"
@@ -173,7 +174,7 @@
                 android:layout_toEndOf="@+id/startExerciseLabel"
                 android:layout_marginStart="8dp"
                 android:layout_marginLeft="8dp"
-                fontPath="fonts/Quicksand-Light.ttf"/>
+                fontPath="fonts/Quicksand-Light.ttf"/>-->
 
         </RelativeLayout>
 

@@ -42,7 +42,7 @@
 
         <activity android:name=".activity.CalendarActivity"
             android:label="@string/calendar_title"
-            android:theme="@style/AppTheme.NoActionBar"
+            android:theme="@style/CalendarTheme"
             android:configChanges="orientation"
             android:screenOrientation="portrait"/>
 

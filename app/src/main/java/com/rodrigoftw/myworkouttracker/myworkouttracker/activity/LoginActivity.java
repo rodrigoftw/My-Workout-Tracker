@@ -5,7 +5,6 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.view.ContextThemeWrapper;
 import android.text.method.PasswordTransformationMethod;
@@ -17,12 +16,11 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.AuthResult;
 import com.rodrigoftw.myworkouttracker.myworkouttracker.R;
+import com.rodrigoftw.myworkouttracker.myworkouttracker.controller.SessionController;
 import com.rodrigoftw.myworkouttracker.myworkouttracker.exception.InvalidFormException;
 import com.rodrigoftw.myworkouttracker.myworkouttracker.helpers.Validator;
+import com.rodrigoftw.myworkouttracker.myworkouttracker.util.Util;
 
 /**
  * Created by Rodrigo on 23/02/2017.
@@ -36,12 +34,16 @@ public class LoginActivity extends BaseActivity {
     private Button btnLogin;
     private TextView forgotPassword;
     private ProgressDialog progressDialog;
+    private boolean testNetwork;
 
     /**
      * Class attributes
      */
 
     private Context ctx;
+    /*private CallbackManager callbackManager;
+    private AccessTokenTracker accessTokenTracker;*/
+    private SessionController sessionController;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,6 +54,9 @@ public class LoginActivity extends BaseActivity {
         //Remove notification bar
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_login);
+
+        // start session controller
+        this.sessionController = new SessionController(this);
 
         // save context
         this.ctx = this;
@@ -95,6 +100,42 @@ public class LoginActivity extends BaseActivity {
      * Validar os dados inseridos pelo usuário no campo de e-mail
      */
     private void validate() throws InvalidFormException {
+
+        //Teste conexão com internet
+        testNetwork = Util.isNetworkAvailable();
+        /*if (testNetwork) {
+            try {
+                String emailValue = etEmail.getText().toString().trim();
+                String passwordValue = etPassword.getText().toString().trim();
+
+                if (!Validator.email(emailValue)) {
+                    throw new InvalidFormException("Forneça um e-mail válido!", etEmail);
+                }
+
+                if (passwordValue.isEmpty()) {
+                    throw new InvalidFormException("Informe sua senha!", etPassword);
+                }
+
+                if (passwordValue.length() < 6 || passwordValue.length() > 10) {
+                    throw new InvalidFormException("Sua senha deve ter entre 6 e 10 caracteres!", etPassword);
+                }
+
+                // 3. Fazer requisição para a API, para verificar as credenciais do usuário
+                sessionController.attempt(emailValue, passwordValue);
+            } catch (InvalidFormException e) {
+                e.getElem().requestFocus();
+                e.getElem().setError(e.getMessage());
+            } finally {
+
+                progressDialog.setMessage("Fazendo login. Por favor, aguarde...");
+                progressDialog.show();
+                progressDialog.setCancelable(false);
+
+            }
+        }else {
+            Toast.makeText(ctx, "Sem conexão com a internet!", Toast.LENGTH_LONG).show();
+        }*/
+
         String emailValue = etEmail.getText().toString().trim();
         String passwordValue = etPassword.getText().toString().trim();
 
@@ -114,20 +155,19 @@ public class LoginActivity extends BaseActivity {
         progressDialog.show();
         progressDialog.setCancelable(false);
 
-        firebaseAuth.signInWithEmailAndPassword(emailValue, passwordValue)
+        /*firebaseAuth.signInWithEmailAndPassword(emailValue, passwordValue)
         .addOnCompleteListener(LoginActivity.this, new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
-
                 progressDialog.dismiss();
                 if (task.isSuccessful()){
-                    finish();
+                    finish();*/
                     startActivity(new Intent(getApplicationContext(), TrainingScheduleActivity.class));
-                } else {
+                /*} else {
                     invalidCredentialsDialog(ctx);
                 }
             }
-        });
+        });*/
     }
 
     private void invalidCredentialsDialog(final Context ctx) {

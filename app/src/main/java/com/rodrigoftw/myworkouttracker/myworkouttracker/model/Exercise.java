@@ -67,7 +67,7 @@ public class Exercise {
     }
 
     public String getRestExercise() {
-        return restExercise;
+        return "Descanso: " + restExercise;
     }
 
     public void setRestExercise(String restExercise) {

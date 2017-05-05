@@ -43,8 +43,9 @@ public class WeightChartFragment extends BaseFragment {
     private ValueShape shape = ValueShape.CIRCLE;
     private boolean isFilled = false;
     private boolean hasLabels = true;
-    private boolean isCubic = false;
+    private boolean isCubic = true;
     private boolean hasLabelForSelected = true;
+    private boolean hasLabelOnlyForSelected = false;
     private boolean pointsHaveDifferentColor;
     private boolean hasGradientToTransparent = false;
 
@@ -85,7 +86,6 @@ public class WeightChartFragment extends BaseFragment {
 
     private void reset() {
         numberOfLines = 1;
-
         hasAxes = true;
         hasAxesNames = true;
         hasLines = true;
@@ -93,7 +93,7 @@ public class WeightChartFragment extends BaseFragment {
         shape = ValueShape.CIRCLE;
         isFilled = false;
         hasLabels = true;
-        isCubic = false;
+        isCubic = true;
         hasLabelForSelected = true;
         pointsHaveDifferentColor = false;
 
@@ -105,9 +105,9 @@ public class WeightChartFragment extends BaseFragment {
         // Reset viewport height range to (0,100)
         final Viewport v = new Viewport(chart.getMaximumViewport());
         v.bottom = 0;
-        v.top = 100;
-        v.left = 0;
-        v.right = numberOfPoints - 1;
+        v.top = 200;
+        v.left = 1;
+        v.right = 12;//numberOfPoints - 1;
         chart.setMaximumViewport(v);
         chart.setCurrentViewport(v);
     }
@@ -119,25 +119,39 @@ public class WeightChartFragment extends BaseFragment {
 
             List<PointValue> values = new ArrayList<PointValue>();
             for (int j = 0; j < numberOfPoints; ++j) {
-                values.add(new PointValue(j, randomNumbersTab[i][j]));
+                //values.add(new PointValue(j, randomNumbersTab[i][j]));
             }
+            values.add(new PointValue(1, (float) 70.9));
+            values.add(new PointValue(2, (float) 65.7));
+            values.add(new PointValue(3, (float) 75.4));
+            values.add(new PointValue(4, (float) 80.2));
+            values.add(new PointValue(5, (float) 81.5));
+            values.add(new PointValue(6, (float) 84.1));
+            values.add(new PointValue(7, (float) 83.7));
+            values.add(new PointValue(8, (float) 87.0));
+            values.add(new PointValue(9, (float) 88.8));
+            values.add(new PointValue(10, (float) 89.9));
+            values.add(new PointValue(11, (float) 90.3));
+            values.add(new PointValue(12, (float) 93.0));
 
             Line line = new Line(values);
-            line.setColor(ChartUtils.COLORS[i]);
+            //line.setColor(ChartUtils.COLORS[i]);
+            line.setColor(getResources().getColor(R.color.colorPrimary));
             line.setShape(shape);
             line.setCubic(isCubic);
             line.setFilled(isFilled);
             line.setHasLabels(hasLabels);
-            line.setHasLabelsOnlyForSelected(hasLabelForSelected);
+            line.setHasLabelsOnlyForSelected(hasLabelOnlyForSelected);
             line.setHasLines(hasLines);
             line.setHasPoints(hasPoints);
             //line.setHasGradientToTransparent(hasGradientToTransparent);
+            line.setCubic(true);
+            //line.setFormatter(new SimpleLineChartValueFormatter(2));
             if (pointsHaveDifferentColor){
                 line.setPointColor(ChartUtils.COLORS[(i + 1) % ChartUtils.COLORS.length]);
             }
             lines.add(line);
         }
-
         data = new LineChartData(lines);
 
         if (hasAxes) {
@@ -208,7 +222,7 @@ public class WeightChartFragment extends BaseFragment {
             // Remember to set viewport after you call setLineChartData().
             final Viewport v = new Viewport(chart.getMaximumViewport());
             v.bottom = -5;
-            v.top = 105;
+            v.top = 205;
             // You have to set max and current viewports separately.
             chart.setMaximumViewport(v);
             // I changing current viewport with animation in this case.
@@ -217,7 +231,7 @@ public class WeightChartFragment extends BaseFragment {
             // If not cubic restore viewport to (0,100) range.
             final Viewport v = new Viewport(chart.getMaximumViewport());
             v.bottom = 0;
-            v.top = 100;
+            v.top = 200;
 
             // You have to set max and current viewports separately.
             // In this case, if I want animation I have to set current viewport first and use animation listener.
@@ -327,7 +341,47 @@ public class WeightChartFragment extends BaseFragment {
 
         @Override
         public void onValueSelected(int lineIndex, int pointIndex, PointValue value) {
-            Toast.makeText(getActivity(), "Selected: " + value, Toast.LENGTH_SHORT).show();
+            float monthvalue = value.getX();
+            String month = String.valueOf(value.getX());
+            switch ((int) monthvalue) {
+                case 1:
+                    month = "Janeiro";
+                    break;
+                case 2:
+                    month = "Fevereiro";
+                    break;
+                case 3:
+                    month = "Março";
+                    break;
+                case 4:
+                    month = "Abril";
+                    break;
+                case 5:
+                    month = "Maio";
+                    break;
+                case 6:
+                    month = "Junho";
+                    break;
+                case 7:
+                    month = "Julho";
+                    break;
+                case 8:
+                    month = "Agosto";
+                    break;
+                case 9:
+                    month = "Setembro";
+                    break;
+                case 10:
+                    month = "Outubro";
+                    break;
+                case 11:
+                    month = "Novembro";
+                    break;
+                case 12:
+                    month = "Dezembro";
+                    break;
+            }
+            Toast.makeText(getActivity(), month + " - Peso: " + value.getY() + " Kg", Toast.LENGTH_SHORT).show();
         }
 
         @Override

@@ -19,6 +19,7 @@ import android.widget.TextView;
 
 import com.rodrigoftw.myworkouttracker.myworkouttracker.R;
 
+import java.util.Calendar;
 import java.util.Date;
 
 import static com.rodrigoftw.myworkouttracker.myworkouttracker.util.AnimationUtils.animate;
@@ -30,6 +31,7 @@ public class CalendarActivity extends BaseActivity implements NavigationView.OnN
     private static final String MONTH_TEMPLATE = "MMMM yyyy";
     CalendarView calendar = null;
     TextView trainingDate;
+    TextView trainingType;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,13 +69,41 @@ public class CalendarActivity extends BaseActivity implements NavigationView.OnN
         calendar.setShowWeekNumber(false);
 
         trainingDate = (TextView) findViewById(R.id.trainingDate);
-        trainingDate.setText(String.format("%s - Treino de Peitoral/Dorsal", formatDate(DATE_TEMPLATE, new Date(System.currentTimeMillis()))));
+        //trainingDate.setText(String.format("%s - Treino de Peitoral/Dorsal", formatDate(DATE_TEMPLATE, new Date(System.currentTimeMillis()))));
+        trainingDate.setText(String.format("%s", formatDate(DATE_TEMPLATE, new Date(System.currentTimeMillis()))));
 
         animate(trainingDate, getApplicationContext());
+
     }
 
     @Override
     public void onSelectedDayChange(CalendarView view, int year, int monthOfYear, int dayOfMonth) {
+
+        Calendar calendar = Calendar.getInstance();
+        calendar.set(year, monthOfYear, dayOfMonth);
+        int dayOfWeek = calendar.get(Calendar.DAY_OF_WEEK);
+
+        /*Date date=new Date();
+        SimpleDateFormat df2 = new SimpleDateFormat("dd/MM/yyyy");
+        c = df2.format(date);*/
+        /*String b = null;
+
+        if (monthOfYear <= 9) {
+            b = "0" + String.valueOf(monthOfYear + 1);
+        } else *//*if (monthOfYear > 10)*//*{
+            b = String.valueOf(monthOfYear + 1);
+        }*//* else if (monthOfYear == 10) {
+            b = String.valueOf(monthOfYear + 1);
+        }*/
+
+        trainingDate.setText("");
+        String c = dayOfMonth + "/" + (monthOfYear + 1) + "/" + year; /*+ " - " + dayOfWeek;*/ /*" - Treino de Peitoral/Dorsal";*/
+        trainingDate.append(c);
+
+        /*trainingDate = (TextView) findViewById(R.id.trainingDate);
+        trainingDate.setText(String.format("%s - Treino de Peitoral/Dorsal", formatDate(DATE_TEMPLATE, new Date())));
+
+        animate(trainingDate, getApplicationContext());*/
 
         /*Calendar then = new GregorianCalendar(year, monthOfYear, dayOfMonth);
         Toast.makeText(this, then.getTime().toString(), Toast.LENGTH_LONG).show();*/

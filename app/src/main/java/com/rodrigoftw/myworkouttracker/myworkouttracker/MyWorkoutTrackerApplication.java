@@ -5,6 +5,7 @@ import android.content.Context;
 
 import com.joanzapata.iconify.Iconify;
 import com.joanzapata.iconify.fonts.FontAwesomeModule;
+import com.rodrigoftw.myworkouttracker.myworkouttracker.model.User;
 
 import uk.co.chrisjenx.calligraphy.CalligraphyConfig;
 
@@ -19,7 +20,7 @@ public final class MyWorkoutTrackerApplication extends Application {
      * Instances
      */
     private static Context context;
-    /*public static User user;*/
+    public static User user;
 
     @Override
     public void onCreate() {
