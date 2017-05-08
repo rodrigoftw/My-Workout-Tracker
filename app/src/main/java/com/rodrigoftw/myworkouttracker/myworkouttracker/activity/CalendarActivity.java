@@ -10,6 +10,8 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.view.ContextThemeWrapper;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
@@ -18,10 +20,15 @@ import android.widget.CalendarView;
 import android.widget.TextView;
 
 import com.rodrigoftw.myworkouttracker.myworkouttracker.R;
+import com.rodrigoftw.myworkouttracker.myworkouttracker.adapter.SimpleExerciseAdapter;
+import com.rodrigoftw.myworkouttracker.myworkouttracker.component.LoadLayout;
+import com.rodrigoftw.myworkouttracker.myworkouttracker.model.Exercise;
+import com.yqritc.recyclerviewflexibledivider.HorizontalDividerItemDecoration;
 
-import java.util.Calendar;
+import java.util.ArrayList;
 import java.util.Date;
 
+import static com.rodrigoftw.myworkouttracker.myworkouttracker.R.id.calendar_view;
 import static com.rodrigoftw.myworkouttracker.myworkouttracker.util.AnimationUtils.animate;
 
 
@@ -32,6 +39,9 @@ public class CalendarActivity extends BaseActivity implements NavigationView.OnN
     CalendarView calendar = null;
     TextView trainingDate;
     TextView trainingType;
+    private RecyclerView exerciseRecyclerView;
+    private SimpleExerciseAdapter adapter;
+    public LoadLayout loadLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,7 +73,7 @@ public class CalendarActivity extends BaseActivity implements NavigationView.OnN
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
-        calendar = (CalendarView) findViewById(R.id.calendar_view);
+        calendar = (CalendarView) findViewById(calendar_view);
         calendar.setOnDateChangeListener(this);
         calendar.setFirstDayOfWeek(2);
         calendar.setShowWeekNumber(false);
@@ -74,14 +84,33 @@ public class CalendarActivity extends BaseActivity implements NavigationView.OnN
 
         animate(trainingDate, getApplicationContext());
 
+        exerciseRecyclerView = (RecyclerView) findViewById(R.id.exercisesList);
+        exerciseRecyclerView.addItemDecoration(new HorizontalDividerItemDecoration.Builder(this).build());
+
+        // create list
+        final ArrayList<Exercise> exercisesList = new ArrayList<Exercise>();
+
+        // add items to list
+        for (int i = 0; i < 5; i++) {
+            exercisesList.add(
+                    new Exercise(i, "Supino Reto com Barra"/*, 3, 12, "60"*/)
+            );
+        }
+
+        adapter = new SimpleExerciseAdapter(ctx, exercisesList);
+        RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext());
+        exerciseRecyclerView.setLayoutManager(mLayoutManager);
+        exerciseRecyclerView.setAdapter(adapter);
+        loadLayout = (LoadLayout) findViewById(R.id.loadLayout);
+
     }
 
     @Override
     public void onSelectedDayChange(CalendarView view, int year, int monthOfYear, int dayOfMonth) {
 
-        Calendar calendar = Calendar.getInstance();
+        /*Calendar calendar = Calendar.getInstance();
         calendar.set(year, monthOfYear, dayOfMonth);
-        int dayOfWeek = calendar.get(Calendar.DAY_OF_WEEK);
+        int dayOfWeek = calendar.get(Calendar.DAY_OF_WEEK);*/
 
         /*Date date=new Date();
         SimpleDateFormat df2 = new SimpleDateFormat("dd/MM/yyyy");
@@ -96,17 +125,17 @@ public class CalendarActivity extends BaseActivity implements NavigationView.OnN
             b = String.valueOf(monthOfYear + 1);
         }*/
 
-        trainingDate.setText("");
-        String c = dayOfMonth + "/" + (monthOfYear + 1) + "/" + year; /*+ " - " + dayOfWeek;*/ /*" - Treino de Peitoral/Dorsal";*/
-        trainingDate.append(c);
+        /*trainingDate.setText("");
+        String c = dayOfMonth + "/" + (monthOfYear + 1) + "/" + year; *//*+ " - " + dayOfWeek;*//* *//*" - Treino de Peitoral/Dorsal";*//*
+        trainingDate.append(c);*/
 
-        /*trainingDate = (TextView) findViewById(R.id.trainingDate);
-        trainingDate.setText(String.format("%s - Treino de Peitoral/Dorsal", formatDate(DATE_TEMPLATE, new Date())));
+        trainingDate = (TextView) findViewById(R.id.trainingDate);
+        trainingDate.setText(String.format("%s - Treino de Peitoral/Dorsal", formatDate(DATE_TEMPLATE, new Date(year - 1900, monthOfYear, dayOfMonth))));
 
-        animate(trainingDate, getApplicationContext());*/
+        animate(trainingDate, getApplicationContext());
 
         /*Calendar then = new GregorianCalendar(year, monthOfYear, dayOfMonth);
-        Toast.makeText(this, then.getTime().toString(), Toast.LENGTH_LONG).show();*/
+        Toast.makeText(this, then.getTime().toString(), Toast.LENGTH_SHORT).show();*/
     }
 
     @Override

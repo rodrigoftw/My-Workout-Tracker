@@ -26,6 +26,14 @@ public class Exercise {
         this.interpolator = interpolator;*/
     }
 
+    public Exercise(int idExercise, String nameExercise/*, int setsExercise, int repsExercise, String restExercise*/) {
+        this.idExercise = idExercise;
+        this.nameExercise = nameExercise;
+        /*this.setsExercise = setsExercise;
+        this.repsExercise = repsExercise;
+        this.restExercise = restExercise;*/
+    }
+
     public int getIdExercise() {
         return idExercise;
     }

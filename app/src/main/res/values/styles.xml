@@ -24,6 +24,13 @@
         <item name="drawerArrowStyle">@style/DrawerArrowStyle</item>
     </style>
 
+
+    <!--<style name="Widget.CalendarView.Custom" parent="android:Widget.CalendarView">
+        <item name="android:weekNumberColor">@color/red</item>
+        <item name="android:weekDayTextAppearance">@style/TextAppearance.Medium</item>
+        <item name="android:dateTextAppearance">@style/TextAppearance.Medium</item>
+    </style>-->
+
     <!-- Base application theme. -->
     <style name="CalendarTheme" parent="AppTheme">
         <!-- Customize your theme here. -->
@@ -34,6 +41,7 @@
         <item name="windowNoTitle">true</item>
         <item name="windowActionBar">false</item>
         <item name="drawerArrowStyle">@style/DrawerArrowStyle</item>
+        <item name="android:focusedMonthDateColor">@color/whiteColor</item>
     </style>
 
     <!--<item name="android:actionOverflowButtonStyle">@style/CustomButtonOverflow</item>-->

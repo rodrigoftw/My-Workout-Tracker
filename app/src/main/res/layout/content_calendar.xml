@@ -22,6 +22,9 @@
         android:weekNumberColor="@color/whiteColor"
         android:firstDayOfWeek="2"
         android:selectedWeekBackgroundColor="@color/whiteColor"
+        android:focusedMonthDateColor="@color/whiteColor"
+        android:unfocusedMonthDateColor="@color/whiteColor"
+        android:minDate="2017"
         android:showWeekNumber="false"/>
 
     <View
@@ -31,31 +34,58 @@
         android:layout_height="1dp"
         android:background="?android:attr/listDivider"/>
 
+    <TextView
+        android:id="@+id/trainingDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/horizontalDivider"
+        android:textSize="20sp"
+        android:text="Dia/do/Treino - Treino"
+        android:layout_gravity="center"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="12dp"
+        android:layout_marginBottom="12dp"/>
+
     <ScrollView
         android:id="@+id/dateDetails"
-        android:layout_below="@+id/horizontalDivider"
+        android:layout_below="@+id/trainingDate"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+        <!--android:layout_below="@+id/horizontalDivider"-->
 
-        <RelativeLayout
+        <!--<RelativeLayout
             android:id="@+id/detailsContainer"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content">-->
 
-            <TextView
-                android:id="@+id/trainingDate"
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:id="@+id/exercisesListLayout"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textSize="20sp"
-                android:text=""
-                android:layout_gravity="center"
-                android:layout_alignParentStart="true"
-                android:layout_alignParentLeft="true"
-                android:layout_marginStart="12dp"
-                android:layout_marginLeft="12dp"
-                android:layout_marginTop="12dp" />
+                android:orientation="vertical">
 
-        </RelativeLayout>
+
+                <!--android:layout_alignParentStart="true"
+                android:layout_marginStart="12dp"-->
+
+                <com.rodrigoftw.myworkouttracker.myworkouttracker.component.LoadLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:id="@+id/loadLayout">
+
+                    <android.support.v7.widget.RecyclerView
+                        android:id="@+id/exercisesList"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:clipToPadding="false"
+                        android:scrollbars="vertical"/>
+
+                </com.rodrigoftw.myworkouttracker.myworkouttracker.component.LoadLayout>
+
+            </LinearLayout>
+
+
+        <!--</RelativeLayout>-->
 
     </ScrollView>
 

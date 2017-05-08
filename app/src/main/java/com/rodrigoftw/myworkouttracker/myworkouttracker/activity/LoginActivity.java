@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.view.ContextThemeWrapper;
 import android.text.method.PasswordTransformationMethod;
@@ -16,6 +17,9 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
 import com.rodrigoftw.myworkouttracker.myworkouttracker.R;
 import com.rodrigoftw.myworkouttracker.myworkouttracker.controller.SessionController;
 import com.rodrigoftw.myworkouttracker.myworkouttracker.exception.InvalidFormException;
@@ -155,19 +159,19 @@ public class LoginActivity extends BaseActivity {
         progressDialog.show();
         progressDialog.setCancelable(false);
 
-        /*firebaseAuth.signInWithEmailAndPassword(emailValue, passwordValue)
+        firebaseAuth.signInWithEmailAndPassword(emailValue, passwordValue)
         .addOnCompleteListener(LoginActivity.this, new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 progressDialog.dismiss();
                 if (task.isSuccessful()){
-                    finish();*/
+                    finish();
                     startActivity(new Intent(getApplicationContext(), TrainingScheduleActivity.class));
-                /*} else {
+                } else {
                     invalidCredentialsDialog(ctx);
                 }
             }
-        });*/
+        });
     }
 
     private void invalidCredentialsDialog(final Context ctx) {

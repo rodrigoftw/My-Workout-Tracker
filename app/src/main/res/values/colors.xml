@@ -13,6 +13,7 @@
     <color name="colorText">#fefefe</color>
     <color name="colorDivider">#bdbdbd</color>
     <color name="colorCard">#f9f9f9</color>
+    <color name="light_gray">#cccccc</color>
 
     <!-- Material Colors -->
 
