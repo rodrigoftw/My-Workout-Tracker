@@ -24,6 +24,9 @@
         <item name="drawerArrowStyle">@style/DrawerArrowStyle</item>
     </style>
 
+    <style name="ToolbarColoredBackArrow" parent="AppTheme">
+        <item name="android:textColorSecondary">@color/whiteColor</item>
+    </style>
 
     <!--<style name="Widget.CalendarView.Custom" parent="android:Widget.CalendarView">
         <item name="android:weekNumberColor">@color/red</item>
