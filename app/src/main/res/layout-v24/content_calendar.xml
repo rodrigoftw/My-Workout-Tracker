@@ -46,9 +46,16 @@
         android:layout_marginTop="12dp"
         android:layout_marginBottom="12dp"/>
 
+    <View
+        android:id="@+id/exerciseListDivider"
+        android:layout_below="@+id/trainingDate"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="?android:attr/listDivider"/>
+
     <ScrollView
         android:id="@+id/dateDetails"
-        android:layout_below="@+id/trainingDate"
+        android:layout_below="@+id/exerciseListDivider"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
         <!--android:layout_below="@+id/horizontalDivider"-->
