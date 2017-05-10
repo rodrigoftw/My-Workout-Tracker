@@ -20,9 +20,16 @@
     <string name="recover_password__instructions_label">Insira seu e-mail cadastrado no sistema para receber instruções. Você poderá alterar sua senha clicando no link que lhe enviaremos.</string>
     <string name="recover_password_label">Recuperar senha</string>
 
+    <!-- User Data Activity -->
+    <string name="change_user_image">Toque acima para alterar sua imagem.</string>
+    <string name="name_label">Nome</string>
+    <string name="current_password_label">Senha atual</string>
+    <string name="new_password_label">Nova senha</string>
+    <string name="confirm_password_label">Confirmar nova senha</string>
+
+    <!-- Navigation Menu -->
     <string name="action_settings">Configurações</string>
     <string name="profile_icon">Ícone de Perfil</string>
-
     <string name="nav_item_home">Minha Ficha</string>
     <string name="nav_item_history">Meu Histórico</string>
     <string name="nav_item_calendar">Calendário</string>
@@ -36,6 +43,7 @@
     <string name="history_title">Histórico</string>
     <string name="calendar_title">Calendário</string>
     <string name="forgot_password_title">Recuperação de Senha</string>
+    <string name="user_data_title">Editar Dados</string>
 
     <!-- navigation drawer item labels  -->
     <string-array name="nav_drawer_labels">
