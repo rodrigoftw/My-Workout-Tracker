@@ -145,9 +145,13 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
         } else if (id == R.id.nav_calendar) {
             startActivity(new Intent(BaseActivity.this, CalendarActivity.class));
             finish();
-        } else if (id == R.id.nav_share) {
-
-        } else if (id == R.id.nav_send) {
+        } else if (id == R.id.nav_settings) {
+            startActivity(new Intent(BaseActivity.this, UserDataActivity.class));
+            finish();
+        } else if (id == R.id.nav_help) {
+            startActivity(new Intent(BaseActivity.this, HelpActivity.class));
+            finish();
+        } else if (id == R.id.nav_about) {
 
         } else if (id == R.id.nav_logout) {
             logOutDialog(ctx);

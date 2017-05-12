@@ -20,17 +20,25 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:textSize="18sp"
-        android:text="31/03/2017 - Sexta: A - Peitoral/Dorsal"
+        android:text="12/05/2017 - Sexta: A - Peitoral/Dorsal"
         android:layout_marginBottom="@dimen/activity_vertical_margin"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true" />
 
+    <View
+        android:id="@+id/exerciseListDivider"
+        android:layout_below="@+id/currentTrainingDateTextView"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="?android:attr/listDivider"/>
+
     <android.support.v7.widget.RecyclerView
         xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/recyclerViewExercise"
-        android:layout_below="@+id/currentTrainingDateTextView"
+        android:layout_below="@+id/exerciseListDivider"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:overScrollMode="never"
         android:scrollbars="vertical" />
 
 </RelativeLayout>

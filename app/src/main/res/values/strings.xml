@@ -21,20 +21,26 @@
     <string name="recover_password_label">Recuperar senha</string>
 
     <!-- User Data Activity -->
-    <string name="change_user_image">Toque acima para alterar sua imagem.</string>
+    <string name="change_user_image">Toque acima para alterar sua foto.</string>
     <string name="name_label">Nome</string>
+    <string name="change_password_label">Alterar Senha</string>
     <string name="current_password_label">Senha atual</string>
     <string name="new_password_label">Nova senha</string>
     <string name="confirm_password_label">Confirmar nova senha</string>
 
+    <!-- Help Activity -->
+    <string name="quit_help_button">Fechar Ajuda</string>
+
     <!-- Navigation Menu -->
     <string name="action_settings">Configurações</string>
     <string name="profile_icon">Ícone de Perfil</string>
+    <string name="edit_user_data_text">Editar Dados</string>
     <string name="nav_item_home">Minha Ficha</string>
     <string name="nav_item_history">Meu Histórico</string>
     <string name="nav_item_calendar">Calendário</string>
     <string name="nav_title_other">Outros</string>
-    <string name="nav_item_share">Compartilhar</string>
+    <string name="nav_item_settings">Editar Dados</string>
+    <string name="nav_item_help">Ajuda</string>
     <string name="nav_item_about">Sobre</string>
     <string name="nav_item_logout">Sair</string>
 
@@ -60,5 +66,8 @@
     <string name="image_exercise_description">Imagem do Exercício</string>
 
     <string name="forgot_password_success">O link de redefinição de senha foi enviado para o seu email.</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 </resources>

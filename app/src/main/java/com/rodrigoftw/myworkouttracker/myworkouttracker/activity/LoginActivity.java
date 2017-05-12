@@ -165,7 +165,7 @@ public class LoginActivity extends BaseActivity {
             public void onComplete(@NonNull Task<AuthResult> task) {
                 progressDialog.dismiss();
                 if (task.isSuccessful()){
-                    finish();
+                    /*finish();*/
                     startActivity(new Intent(getApplicationContext(), TrainingScheduleActivity.class));
                 } else {
                     invalidCredentialsDialog(ctx);
@@ -183,8 +183,8 @@ public class LoginActivity extends BaseActivity {
                     @Override
                     public void onClick(DialogInterface dialog, int id) {
                         dialog.dismiss();
-                        finish();
-                        startActivity(new Intent(ctx, LoginActivity.class));
+                        /*finish();
+                        startActivity(new Intent(ctx, LoginActivity.class));*/
                     }
                 });
                 /*.setNegativeButton(R.string.reject_order_cancelled, new DialogInterface.OnClickListener() {

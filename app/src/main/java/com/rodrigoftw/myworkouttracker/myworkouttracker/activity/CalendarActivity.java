@@ -178,15 +178,19 @@ public class CalendarActivity extends BaseActivity implements NavigationView.OnN
 
         if (id == R.id.nav_schedule) {
             startActivity(new Intent(CalendarActivity.this,TrainingScheduleActivity.class));
-            finish();
+            /*finish();*/
         } else if (id == R.id.nav_history) {
             startActivity(new Intent(CalendarActivity.this, HistoryActivity.class));
-            finish();
+            /*finish();*/
         } else if (id == R.id.nav_calendar) {
 
-        } else if (id == R.id.nav_share) {
-
-        } else if (id == R.id.nav_send) {
+        } else if (id == R.id.nav_settings) {
+            startActivity(new Intent(CalendarActivity.this, UserDataActivity.class));
+            /*finish();*/
+        } else if (id == R.id.nav_help) {
+            startActivity(new Intent(CalendarActivity.this, HelpActivity.class));
+            /*finish();*/
+        } else if (id == R.id.nav_about) {
 
         } else if (id == R.id.nav_logout) {
             logOutDialog(ctx);

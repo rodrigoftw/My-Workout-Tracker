@@ -150,15 +150,19 @@ public class HistoryActivity extends BaseActivity implements NavigationView.OnNa
 
         if (id == R.id.nav_schedule) {
             startActivity(new Intent(HistoryActivity.this, TrainingScheduleActivity.class));
-            finish();
+            /*finish();*/
         } else if (id == R.id.nav_history) {
 
         } else if (id == R.id.nav_calendar) {
             startActivity(new Intent(HistoryActivity.this, CalendarActivity.class));
-            finish();
-        } else if (id == R.id.nav_share) {
-
-        } else if (id == R.id.nav_send) {
+            /*finish();*/
+        } else if (id == R.id.nav_settings) {
+            startActivity(new Intent(HistoryActivity.this, UserDataActivity.class));
+            /*finish();*/
+        } else if (id == R.id.nav_help) {
+            startActivity(new Intent(HistoryActivity.this, HelpActivity.class));
+            /*finish();*/
+        } else if (id == R.id.nav_about) {
 
         } else if (id == R.id.nav_logout) {
             logOutDialog(ctx);

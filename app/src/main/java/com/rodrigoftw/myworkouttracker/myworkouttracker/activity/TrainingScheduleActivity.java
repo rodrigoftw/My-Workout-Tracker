@@ -220,13 +220,17 @@ public class TrainingScheduleActivity extends BaseActivity implements Navigation
             
         } else if (id == R.id.nav_history) {
             startActivity(new Intent(TrainingScheduleActivity.this, HistoryActivity.class));
-            finish();
+            /*finish();*/
         } else if (id == R.id.nav_calendar) {
             startActivity(new Intent(TrainingScheduleActivity.this, CalendarActivity.class));
-            finish();
-        } else if (id == R.id.nav_share) {
-
-        } else if (id == R.id.nav_send) {
+            /*finish();*/
+        } else if (id == R.id.nav_settings) {
+            startActivity(new Intent(TrainingScheduleActivity.this, UserDataActivity.class));
+            /*finish();*/
+        } else if (id == R.id.nav_help) {
+            startActivity(new Intent(TrainingScheduleActivity.this, HelpActivity.class));
+            /*finish();*/
+        } else if (id == R.id.nav_about) {
 
         } else if (id == R.id.nav_logout) {
             logOutDialog(ctx);

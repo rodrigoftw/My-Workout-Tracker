@@ -47,13 +47,11 @@
         <item name="android:focusedMonthDateColor">@color/whiteColor</item>
     </style>
 
-    <!--<item name="android:actionOverflowButtonStyle">@style/CustomButtonOverflow</item>-->
-    <!-- Style to replace actionbar overflow icon. set item 'android:actionOverflowButtonStyle' in AppTheme -->
-    <!--<style name="CustomButtonOverflow" parent="android:style/Widget.Holo.Light.ActionButton.Overflow">
-        <item name="android:src">@drawable/ic_menu_settings</item>
-    </style>-->
-
     <style name="LoginTheme" parent="AppTheme">
+        <item name="colorControlActivated">#445963</item>
+    </style>
+
+    <style name="EditUserDataTheme" parent="AppTheme">
         <item name="colorControlActivated">#445963</item>
     </style>
 

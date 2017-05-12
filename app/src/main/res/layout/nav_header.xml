@@ -18,7 +18,7 @@
         android:layout_height="72dp"
         android:paddingTop="@dimen/nav_header_vertical_spacing"
         android:src="@drawable/user_placeholder"
-        app:srcCompat="@android:drawable/sym_def_app_icon"
+        app:srcCompat="@drawable/user_placeholder"
         app:civ_border_width="2dp"
         app:civ_border_color="@android:color/white"/>
 
@@ -27,7 +27,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingTop="@dimen/nav_header_vertical_spacing"
-        android:text="Rodrigo Andrade"
+        android:text="Bem-vindo(a), Rodrigo Andrade!"
         fontPath="fonts/Quicksand-Light.ttf"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
 

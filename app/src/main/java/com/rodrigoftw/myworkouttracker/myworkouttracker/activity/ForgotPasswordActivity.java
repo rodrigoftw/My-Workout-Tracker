@@ -94,18 +94,18 @@ public class ForgotPasswordActivity extends BaseActivity {
         progressDialog.setCancelable(false);
 
         firebaseAuth.sendPasswordResetEmail(emailValue)
-                .addOnCompleteListener(new OnCompleteListener<Void>() {
-                    @Override
-                    public void onComplete(@NonNull Task<Void> task) {
-                        if (task.isSuccessful()) {
-                            emailValidationSuccessDialog(ctx);
-                            /*Toast.makeText(ResetPasswordActivity.this, "We have sent you instructions to reset your password!", Toast.LENGTH_SHORT).show();*/
-                        } else {
-                            emailValidationFailureDialog(ctx);
-                            /*Toast.makeText(ResetPasswordActivity.this, "Failed to send reset email!", Toast.LENGTH_SHORT).show();*/
-                        }
+            .addOnCompleteListener(new OnCompleteListener<Void>() {
+                @Override
+                public void onComplete(@NonNull Task<Void> task) {
+                    if (task.isSuccessful()) {
+                        emailValidationSuccessDialog(ctx);
+                        /*Toast.makeText(ResetPasswordActivity.this, "We have sent you instructions to reset your password!", Toast.LENGTH_SHORT).show();*/
+                    } else {
+                        emailValidationFailureDialog(ctx);
+                        /*Toast.makeText(ResetPasswordActivity.this, "Failed to send reset email!", Toast.LENGTH_SHORT).show();*/
                     }
-                });
+                }
+            });
     }
 
     @Override

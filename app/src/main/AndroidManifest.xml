@@ -51,6 +51,20 @@
             android:configChanges="orientation"
             android:screenOrientation="portrait"/>
 
+        <activity android:name=".activity.UserDataActivity"
+            android:label="@string/user_data_title"
+            android:theme="@style/EditUserDataTheme"
+            android:windowSoftInputMode="adjustPan"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"/>
+
+        <activity
+            android:name=".activity.HelpActivity"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"
+            android:theme="@style/LoginTheme">
+        </activity>
+
     </application>
 
 </manifest>
