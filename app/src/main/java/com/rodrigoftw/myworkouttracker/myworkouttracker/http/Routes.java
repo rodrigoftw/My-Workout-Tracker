@@ -10,8 +10,8 @@ public class Routes {
     public static String BASE_APP = null;
     public static final String BASE_API = "api/";
     public static final String LOGIN = "user/login";
-    public static final String SOCIAL_LOGIN = "user/social/login";
-    public static final String REGISTER = "user/register";
+    /*public static final String SOCIAL_LOGIN = "user/social/login";
+    public static final String REGISTER = "user/register";*/
     public static final String LIST_EXERCISES = "exercise";
     public static final String UPLOAD = "upload/";
     public static final String USER_ME = "me";

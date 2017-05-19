@@ -9,13 +9,16 @@ import android.support.annotation.NonNull;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.view.ContextThemeWrapper;
 import android.text.method.PasswordTransformationMethod;
+import android.view.KeyEvent;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -75,18 +78,42 @@ public class LoginActivity extends BaseActivity {
         btnLogin = (Button) findViewById(R.id.btnLogin);
         forgotPassword = (TextView) findViewById(R.id.forgot_password);
 
+        etPassword.setOnEditorActionListener(new EditText.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                if (actionId == EditorInfo.IME_ACTION_DONE) {
+                    btnLogin.performClick();
+                    return true;
+                }
+                return false;
+            }
+        });
+
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                try {
-                    // validate form
-                    validate();
 
-                    // Fazer a requisição para a API, para autenticar os dados fornecidos pelo usuário
-                    //submit();
-                } catch (InvalidFormException e) {
-                    e.getElem().requestFocus();
-                    e.getElem().setError(e.getMessage());
+                //Teste conexão com internet
+                testNetwork = Util.isNetworkAvailable();
+                if (testNetwork) {
+                    // Tentar fazer o login por email e senha
+                    try {
+                        // 1. Pegar dados do formulário
+                        String emailValue = etEmail.getText().toString().trim();
+                        String passwordValue = etPassword.getText().toString().trim();
+
+                        // 2. Validar os dados fornecidos
+                        validate(emailValue, passwordValue);
+
+                        // 3. Fazer requisição para a API, para verificar as credenciais do usuário
+                        sessionController.attempt(emailValue, passwordValue);
+
+                    } catch (InvalidFormException e) {
+                        e.getElem().requestFocus();
+                        e.getElem().setError(e.getMessage());
+                    }
+                } else {
+                    Toast.makeText(ctx, "Sem conexão com a internet!", Toast.LENGTH_LONG).show();
                 }
             }
         });
@@ -94,7 +121,8 @@ public class LoginActivity extends BaseActivity {
         forgotPassword.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(LoginActivity.this, ForgotPasswordActivity.class));
+                //startActivity(new Intent(LoginActivity.this, ForgotPasswordActivity.class));
+                startActivity(new Intent(ctx, ForgotPasswordActivity.class));
             }
         });
 
@@ -103,10 +131,9 @@ public class LoginActivity extends BaseActivity {
     /**
      * Validar os dados inseridos pelo usuário no campo de e-mail
      */
-    private void validate() throws InvalidFormException {
+    private void validate(String emailValue, String passwordValue) throws InvalidFormException {
 
-        //Teste conexão com internet
-        testNetwork = Util.isNetworkAvailable();
+
         /*if (testNetwork) {
             try {
                 String emailValue = etEmail.getText().toString().trim();
@@ -137,11 +164,11 @@ public class LoginActivity extends BaseActivity {
 
             }
         }else {
-            Toast.makeText(ctx, "Sem conexão com a internet!", Toast.LENGTH_LONG).show();
+
         }*/
 
-        String emailValue = etEmail.getText().toString().trim();
-        String passwordValue = etPassword.getText().toString().trim();
+        /*String emailValue = etEmail.getText().toString().trim();
+        String passwordValue = etPassword.getText().toString().trim();*/
 
         if (!Validator.email(emailValue)) {
             throw new InvalidFormException("Forneça um e-mail válido!", etEmail);
@@ -165,7 +192,7 @@ public class LoginActivity extends BaseActivity {
             public void onComplete(@NonNull Task<AuthResult> task) {
                 progressDialog.dismiss();
                 if (task.isSuccessful()){
-                    finish();
+                    /*finish();*/
                     startActivity(new Intent(getApplicationContext(), TrainingScheduleActivity.class));
                 } else {
                     invalidCredentialsDialog(ctx);

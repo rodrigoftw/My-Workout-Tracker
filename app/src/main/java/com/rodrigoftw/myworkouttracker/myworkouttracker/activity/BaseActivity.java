@@ -19,7 +19,9 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.view.WindowManager;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -41,6 +43,10 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
     protected Toolbar toolbar;
     protected TextView toolbarTitle;
     protected FirebaseAuth firebaseAuth;
+    protected NavigationView navigationView;
+    protected ImageView headerUserImage;
+    protected TextView headerUserName;
+    protected TextView headerUserEmail;
 
     @Override
     public void onCreate(Bundle savedInstanceState, PersistableBundle persistentState) {
@@ -51,6 +57,15 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
             getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                     WindowManager.LayoutParams.FLAG_FULLSCREEN);
         }
+
+        View navHeaderView = navigationView.inflateHeaderView(R.layout.nav_header);
+
+        headerUserImage = (ImageView) navHeaderView.findViewById(R.id.userImage);
+        headerUserName = (TextView) navHeaderView.findViewById(R.id.userName);
+        headerUserEmail = (TextView) navHeaderView.findViewById(R.id.userEmail);
+        //headerUserImage.setText();
+        headerUserName.setText("Rodrigo Andrade");
+        headerUserEmail.setText("rodrigoftw2@gmail.com");
     }
 
     @Override
@@ -137,25 +152,25 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
         int id = item.getItemId();
 
         if (id == R.id.nav_schedule) {
-            startActivity(new Intent(BaseActivity.this, TrainingScheduleActivity.class));
+            startActivity(new Intent(ctx, TrainingScheduleActivity.class));
             /*finish();*/
         } else if (id == R.id.nav_history) {
-            startActivity(new Intent(BaseActivity.this, HistoryActivity.class));
+            startActivity(new Intent(ctx, HistoryActivity.class));
             /*finish();*/
         } else if (id == R.id.nav_calendar) {
-            startActivity(new Intent(BaseActivity.this, CalendarActivity.class));
+            startActivity(new Intent(ctx, CalendarActivity.class));
             /*finish();*/
         } else if (id == R.id.nav_settings) {
-            startActivity(new Intent(BaseActivity.this, UserDataActivity.class));
+            startActivity(new Intent(ctx, UserDataActivity.class));
             /*finish();*/
         } else if (id == R.id.nav_help) {
-            startActivity(new Intent(BaseActivity.this, HelpActivity.class));
+            startActivity(new Intent(ctx, HelpActivity.class));
             /*finish();*/
         } else if (id == R.id.nav_about) {
-            startActivity(new Intent(BaseActivity.this, AboutActivity.class));
+            startActivity(new Intent(ctx, AboutActivity.class));
         } else if (id == R.id.nav_logout) {
             logOutDialog(ctx);
-            /*startActivity(new Intent(BaseActivity.this, LoginActivity.class));
+            /*startActivity(new Intent(ctx, LoginActivity.class));
             finish();*/
         }
 

@@ -46,6 +46,7 @@ public class MeasurementChartFragment extends BaseFragment {
     private boolean hasLabels = true;
     private boolean isCubic = false;
     private boolean hasLabelForSelected = true;
+    private boolean hasLabelOnlyForSelected = false;
     private boolean pointsHaveDifferentColor;
     private boolean hasGradientToTransparent = false;
 
@@ -143,7 +144,7 @@ public class MeasurementChartFragment extends BaseFragment {
             line.setCubic(isCubic);
             line.setFilled(isFilled);
             line.setHasLabels(hasLabels);
-            line.setHasLabelsOnlyForSelected(hasLabelForSelected);
+            line.setHasLabelsOnlyForSelected(hasLabelOnlyForSelected);
             line.setHasLines(hasLines);
             line.setHasPoints(hasPoints);
             //line.setHasGradientToTransparent(hasGradientToTransparent);

@@ -4,7 +4,6 @@ import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.util.Log;
 
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.RequestParams;
@@ -32,7 +31,7 @@ public class SessionController {
     /**
      * Identificação dos tipos de autenticação do login por redes sociais
      */
-    public static final int AUTH_FACEBOOK = 1;
+    //public static final int AUTH_FACEBOOK = 1;
     public static final int AUTH_GOOGLE = 2;
 
 
@@ -89,7 +88,7 @@ public class SessionController {
      * Tentar fazer o login por facebook/google
      * @param token
      */
-    public void attempt(String token, final int type) {
+    /*public void attempt(String token, final int type) {
         // Loading dialog
         final Dialog loadingDialog = Util.loadingDialog(ctx);
         loadingDialog.show();
@@ -111,7 +110,7 @@ public class SessionController {
             public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
                 try {
                     // Verificar se o usuário não está cadastrado
-                   /* if (response.has("user_guest")) {
+                   *//* if (response.has("user_guest")) {
                         new AlertDialog.Builder(ctx)
                                 .setTitle("Bem vindo!")
                                 .setMessage("Olá, acabamos de verificar que você ainda não está cadastrado em nosso sistema, deseja registrar-se?")
@@ -126,7 +125,7 @@ public class SessionController {
                                 .setNegativeButton("Agora não", null)
                                 .show();
                         return;
-                    }*/
+                    }*//*
 
                     Log.e("SESSIONCONTROLLER", response.toString());
 
@@ -148,7 +147,7 @@ public class SessionController {
                 alert("Falha no login, tente novamente", message);
             }
         });
-    }
+    }*/
 
     /**
      * Salvar o token de acesso a API

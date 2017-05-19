@@ -202,25 +202,25 @@ public class CalendarActivity extends BaseActivity implements NavigationView.OnN
         int id = item.getItemId();
 
         if (id == R.id.nav_schedule) {
-            startActivity(new Intent(CalendarActivity.this,TrainingScheduleActivity.class));
+            startActivity(new Intent(ctx,TrainingScheduleActivity.class));
             /*finish();*/
         } else if (id == R.id.nav_history) {
-            startActivity(new Intent(CalendarActivity.this, HistoryActivity.class));
+            startActivity(new Intent(ctx, HistoryActivity.class));
             /*finish();*/
         } else if (id == R.id.nav_calendar) {
 
         } else if (id == R.id.nav_settings) {
-            startActivity(new Intent(CalendarActivity.this, UserDataActivity.class));
+            startActivity(new Intent(ctx, UserDataActivity.class));
             /*finish();*/
         } else if (id == R.id.nav_help) {
-            startActivity(new Intent(CalendarActivity.this, HelpActivity.class));
+            startActivity(new Intent(ctx, HelpActivity.class));
             /*finish();*/
         } else if (id == R.id.nav_about) {
-            startActivity(new Intent(CalendarActivity.this, AboutActivity.class));
+            startActivity(new Intent(ctx, AboutActivity.class));
         } else if (id == R.id.nav_logout) {
             logOutDialog(ctx);
             /*firebaseAuth.signOut();*/
-            /*startActivity(new Intent(CalendarActivity.this, LoginActivity.class));
+            /*startActivity(new Intent(ctx, LoginActivity.class));
             finish();*/
         }
 

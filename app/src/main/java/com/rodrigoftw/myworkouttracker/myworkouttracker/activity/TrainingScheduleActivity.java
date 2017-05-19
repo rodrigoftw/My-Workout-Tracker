@@ -20,6 +20,7 @@ import android.widget.TextView;
 import com.google.firebase.auth.FirebaseUser;
 import com.rodrigoftw.myworkouttracker.myworkouttracker.R;
 import com.rodrigoftw.myworkouttracker.myworkouttracker.adapter.ExerciseAdapter;
+import com.rodrigoftw.myworkouttracker.myworkouttracker.http.rest.ExercisesHttp;
 import com.rodrigoftw.myworkouttracker.myworkouttracker.model.Exercise;
 
 import java.util.ArrayList;
@@ -35,6 +36,11 @@ public class TrainingScheduleActivity extends BaseActivity implements Navigation
         context.startActivity(new Intent(context, TrainingScheduleActivity.class));
     }
 
+    private ExercisesHttp exercisesHttp;
+    private boolean firstRequest = true;
+    private String query;
+    private BaseActivity ctx;
+
     RecyclerView recyclerView;
     ExerciseAdapter adapter;
     TextView trainingDate;
@@ -49,6 +55,9 @@ public class TrainingScheduleActivity extends BaseActivity implements Navigation
         setTitle(R.string.home_title);
 
         this.ctx = this;
+
+        // test
+        exercisesHttp = new ExercisesHttp(ctx);
 
         firebaseAuth = firebaseAuth.getInstance();
 
@@ -71,6 +80,20 @@ public class TrainingScheduleActivity extends BaseActivity implements Navigation
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
+
+        // refresh layout callback
+        /*loadLayout.callback = new LoadLayout.Callback() {
+            @Override
+            public void reload() {
+                changeRefresh(true);
+            }
+
+            @Override
+            public void fail() {
+                changeRefresh(false);
+            }
+        };*/
+
         recyclerView = (RecyclerView) findViewById(R.id.recyclerViewExercise);
         //recyclerView.addItemDecoration(new DividerItemDecoration(this));
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
@@ -86,6 +109,8 @@ public class TrainingScheduleActivity extends BaseActivity implements Navigation
                 new Exercise(i, "Supino Reto com Barra", 3, 10, "60 segundos", "http://www.exrx.net/AnimatedEx/PectoralSternal/BBBenchPress.gif")
             );
         }*/
+
+
 
         exercise.add(
                 new Exercise(1, "Supino Reto com Barra", 3, 10, 60, "http://www.exrx.net/AnimatedEx/PectoralSternal/BBBenchPress.gif")
@@ -210,6 +235,68 @@ public class TrainingScheduleActivity extends BaseActivity implements Navigation
         recyclerView.setAdapter(new ItemModelAdapter(data));*/
     }
 
+    /*private void changeRefresh(final boolean status) {
+        refreshLayout.post(new Runnable() {
+            @Override
+            public void run() {
+                refreshLayout.setRefreshing(status);
+            }
+        });
+    }*/
+
+    /*public void getExercises() {
+
+        // get exercises
+        exerciseHttp.getExercises(query, new ExercisesHttp.CallbackIndex() {
+            @Override
+            public void finish() {
+                // set refreshing to false
+                refreshLayout.setRefreshing(false);
+            }
+
+            @Override
+            public void index(final ArrayList<Exercise> exercisesList) {
+                // exercises adapter to result
+                final ExercisesListAdapter adapter = new ExercisesListAdapter(ctx, exercisesList);
+                listExercises.setAdapter(adapter);
+                adapter.notifyDataSetChanged();
+                listExercises.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                        if (popupShow) return;
+                        // get exercise object
+                        Exercise exercise = adapter.getItem(position);
+
+                        // start activity
+                        Intent intent = new Intent(ctx, ExerciseProfileActivity.class);
+                        intent.putExtra("id", exercise.getId());
+                        startActivity(intent);
+                    }
+                });
+
+                listExercises.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+                    @Override
+                    public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+                        // get exercise object
+                        Exercise exercise = adapter.getItem(position);
+
+                        // remove touch events
+                        activityTouchable = false;
+
+                        // start activity
+                        Intent intent = new Intent(ctx, PopupExerciseActivity.class);
+                        intent.putExtra("exercise", exercise);
+
+                        startActivity(intent);
+                        ctx.overridePendingTransition(R.anim.zoom_in, R.anim.popup_out);
+
+                        return false;
+                    }
+                });
+            }
+        });
+    }*/
+
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
@@ -219,23 +306,23 @@ public class TrainingScheduleActivity extends BaseActivity implements Navigation
         if (id == R.id.nav_schedule) {
             
         } else if (id == R.id.nav_history) {
-            startActivity(new Intent(TrainingScheduleActivity.this, HistoryActivity.class));
+            startActivity(new Intent(ctx, HistoryActivity.class));
             /*finish();*/
         } else if (id == R.id.nav_calendar) {
-            startActivity(new Intent(TrainingScheduleActivity.this, CalendarActivity.class));
+            startActivity(new Intent(ctx, CalendarActivity.class));
             /*finish();*/
         } else if (id == R.id.nav_settings) {
-            startActivity(new Intent(TrainingScheduleActivity.this, UserDataActivity.class));
+            startActivity(new Intent(ctx, UserDataActivity.class));
             /*finish();*/
         } else if (id == R.id.nav_help) {
-            startActivity(new Intent(TrainingScheduleActivity.this, HelpActivity.class));
+            startActivity(new Intent(ctx, HelpActivity.class));
             /*finish();*/
         } else if (id == R.id.nav_about) {
-            startActivity(new Intent(TrainingScheduleActivity.this, AboutActivity.class));
+            startActivity(new Intent(ctx, AboutActivity.class));
         } else if (id == R.id.nav_logout) {
             logOutDialog(ctx);
             /*firebaseAuth.signOut();*/
-            /*startActivity(new Intent(TrainingScheduleActivity.this, LoginActivity.class));
+            /*startActivity(new Intent(ctx, LoginActivity.class));
             finish();*/
         }
 

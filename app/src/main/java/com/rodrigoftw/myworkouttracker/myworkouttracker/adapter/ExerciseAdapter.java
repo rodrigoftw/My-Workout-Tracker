@@ -62,7 +62,7 @@ public class ExerciseAdapter extends RecyclerView.Adapter<ExerciseAdapter.Exerci
 
     @Override
     public void onBindViewHolder(final ExerciseAdapter.ExerciseViewHolder holder, final int position) {
-        Exercise exercise = mData.get(position);
+        final Exercise exercise = mData.get(position);
 
         Glide.clear(holder.imageExercise);
         Glide.with(ctx)
@@ -79,6 +79,10 @@ public class ExerciseAdapter extends RecyclerView.Adapter<ExerciseAdapter.Exerci
             @Override
             public void onClick(View v) {
                 exerciseAlertDialog(ctx);
+                /*Intent intent = new Intent(ctx, ExerciseActivity.class);
+                intent.putExtra("id", exercise.getIdExercise());
+                intent.putExtra("restTime", exercise.getRestExercise());
+                ctx.startActivity(intent);*/
             }
         });
 

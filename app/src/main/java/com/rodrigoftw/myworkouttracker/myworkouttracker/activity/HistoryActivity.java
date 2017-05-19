@@ -149,25 +149,25 @@ public class HistoryActivity extends BaseActivity implements NavigationView.OnNa
         int id = item.getItemId();
 
         if (id == R.id.nav_schedule) {
-            startActivity(new Intent(HistoryActivity.this, TrainingScheduleActivity.class));
+            startActivity(new Intent(ctx, TrainingScheduleActivity.class));
             /*finish();*/
         } else if (id == R.id.nav_history) {
 
         } else if (id == R.id.nav_calendar) {
-            startActivity(new Intent(HistoryActivity.this, CalendarActivity.class));
+            startActivity(new Intent(ctx, CalendarActivity.class));
             /*finish();*/
         } else if (id == R.id.nav_settings) {
-            startActivity(new Intent(HistoryActivity.this, UserDataActivity.class));
+            startActivity(new Intent(ctx, UserDataActivity.class));
             /*finish();*/
         } else if (id == R.id.nav_help) {
-            startActivity(new Intent(HistoryActivity.this, HelpActivity.class));
+            startActivity(new Intent(ctx, HelpActivity.class));
             /*finish();*/
         } else if (id == R.id.nav_about) {
-            startActivity(new Intent(HistoryActivity.this, AboutActivity.class));
+            startActivity(new Intent(ctx, AboutActivity.class));
         } else if (id == R.id.nav_logout) {
             logOutDialog(ctx);
             /*firebaseAuth.signOut();*/
-            /*startActivity(new Intent(HistoryActivity.this, LoginActivity.class));
+            /*startActivity(new Intent(ctx, LoginActivity.class));
             finish();*/
         }
 
