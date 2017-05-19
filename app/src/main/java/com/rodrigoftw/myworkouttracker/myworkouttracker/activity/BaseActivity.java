@@ -138,21 +138,21 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
 
         if (id == R.id.nav_schedule) {
             startActivity(new Intent(BaseActivity.this, TrainingScheduleActivity.class));
-            finish();
+            /*finish();*/
         } else if (id == R.id.nav_history) {
             startActivity(new Intent(BaseActivity.this, HistoryActivity.class));
-            finish();
+            /*finish();*/
         } else if (id == R.id.nav_calendar) {
             startActivity(new Intent(BaseActivity.this, CalendarActivity.class));
-            finish();
+            /*finish();*/
         } else if (id == R.id.nav_settings) {
             startActivity(new Intent(BaseActivity.this, UserDataActivity.class));
-            finish();
+            /*finish();*/
         } else if (id == R.id.nav_help) {
             startActivity(new Intent(BaseActivity.this, HelpActivity.class));
-            finish();
+            /*finish();*/
         } else if (id == R.id.nav_about) {
-
+            startActivity(new Intent(BaseActivity.this, AboutActivity.class));
         } else if (id == R.id.nav_logout) {
             logOutDialog(ctx);
             /*startActivity(new Intent(BaseActivity.this, LoginActivity.class));

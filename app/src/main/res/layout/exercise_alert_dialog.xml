@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/whiteColor"
+    tools:context="com.rodrigoftw.myworkouttracker.myworkouttracker.activity.TrainingScheduleActivity">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginLeft="50dp"
+        android:layout_marginRight="50dp"
+        android:layout_marginTop="@dimen/margin_small"
+        android:text="Série atual:"
+        android:textSize="18sp"
+        android:textColor="@color/colorPrimary"
+        android:layout_gravity="center"
+        fontPath="fonts/Quicksand-Light.ttf"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginLeft="@dimen/margin_large"
+        android:layout_marginRight="@dimen/margin_large"
+        android:layout_marginStart="@dimen/margin_large"
+        android:layout_marginEnd="@dimen/margin_large"
+        android:layout_marginTop="@dimen/margin_small"
+        android:layout_marginBottom="@dimen/margin_small">
+
+        <!--<nl.dionsegijn.steppertouch.StepperTouch
+            android:id="@+id/stepperTouch"
+            android:layout_width="100dp"
+            android:layout_height="40dp"
+            android:layout_centerInParent="true"
+            android:orientation="horizontal"
+            android:clipChildren="true"
+            fontPath="fonts/Quicksand-Light.ttf"
+            app:stepperBackgroundColor="@color/colorPrimaryDark"
+            app:stepperButtonColor="@color/whiteColor"
+            app:stepperActionsColor="@color/colorPrimaryLight"
+            app:stepperActionsDisabledColor="@color/stepper_actions_disabled"
+            app:stepperTextColor="@color/colorPrimaryLight"
+            app:stepperTextSize="14sp"/>-->
+
+        <android.support.v7.widget.AppCompatButton
+            android:id="@+id/minusButton"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:text="-"
+            android:textSize="30sp"
+            android:textColor="@color/whiteColor"
+            android:layout_marginTop="-7dp"
+            android:layout_marginBottom="-7dp"
+            app:backgroundTint="@color/colorPrimary"/>
+
+        <TextView
+            android:id="@+id/numberSet"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:background="@color/colorPrimaryLight"
+            android:layout_marginLeft="50dp"
+            android:layout_marginRight="50dp"
+            android:text="1ª série"
+            android:textSize="17sp"
+            android:textColor="@color/colorPrimaryDark"
+            android:gravity="center"
+            fontPath="fonts/Quicksand-Light.ttf"/>
+        <!--android:textColor="#545454"-->
+
+        <android.support.v7.widget.AppCompatButton
+            android:id="@+id/plusButton"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:text="+"
+            android:textSize="30sp"
+            android:textColor="@color/whiteColor"
+            app:backgroundTint="@color/colorPrimary"
+            android:layout_marginTop="-7dp"
+            android:layout_marginBottom="-7dp"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true" />
+
+    </RelativeLayout>
+
+</LinearLayout>

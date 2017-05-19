@@ -91,11 +91,36 @@ public class CalendarActivity extends BaseActivity implements NavigationView.OnN
         final ArrayList<Exercise> exercisesList = new ArrayList<Exercise>();
 
         // add items to list
-        for (int i = 0; i < 5; i++) {
+        /*for (int i = 0; i < 5; i++) {
             exercisesList.add(
-                    new Exercise(i, "Supino Reto com Barra"/*, 3, 12, "60"*/)
+                    new Exercise(i, "Supino Reto com Barra", 3, 12, "60")
             );
-        }
+        }*/
+
+        exercisesList.add(
+                new Exercise(1, "Supino Reto com Barra", 3, 10, 60)
+        );
+        exercisesList.add(
+                new Exercise(2, "Supino Inclinado com Barra", 3, 10, 60)
+        );
+        exercisesList.add(
+                new Exercise(3, "Supino Declinado com Barra", 3, 10, 60)
+        );
+        exercisesList.add(
+                new Exercise(4, "Crossover", 3, 10, 60)
+        );
+        exercisesList.add(
+                new Exercise(5, "Barra Fixa", 4, 8, 90)
+        );
+        exercisesList.add(
+                new Exercise(6, "Puxada Frontal", 3, 10, 60)
+        );
+        exercisesList.add(
+                new Exercise(7, "Puxada Traseira", 3, 10, 60)
+        );
+        exercisesList.add(
+                new Exercise(8, "Remada Sentada", 3, 12, 60)
+        );
 
         adapter = new SimpleExerciseAdapter(ctx, exercisesList);
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext());
@@ -191,7 +216,7 @@ public class CalendarActivity extends BaseActivity implements NavigationView.OnN
             startActivity(new Intent(CalendarActivity.this, HelpActivity.class));
             /*finish();*/
         } else if (id == R.id.nav_about) {
-
+            startActivity(new Intent(CalendarActivity.this, AboutActivity.class));
         } else if (id == R.id.nav_logout) {
             logOutDialog(ctx);
             /*firebaseAuth.signOut();*/

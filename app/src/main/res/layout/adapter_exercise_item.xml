@@ -53,8 +53,8 @@
 
         <RelativeLayout
             android:id="@+id/exerciseInfoLayout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
             android:layout_above="@+id/footerDivider"
             android:layout_below="@+id/nameExerciseLayout"
             android:layout_marginTop="8dp">
@@ -66,7 +66,7 @@
                 android:layout_centerVertical="true">
 
                 <TextView
-                    android:id="@+id/setsExercise"
+                    android:id="@+id/setsExerciseLabel"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:gravity="start|center_vertical"
@@ -74,7 +74,38 @@
                     android:paddingRight="0dp"
                     android:paddingStart="@dimen/activity_horizontal_margin"
                     android:paddingEnd="0dp"
-                    android:text="Séries: 3"
+                    android:text="Séries: "
+                    android:textColor="@android:color/black"
+                    android:textSize="16sp"
+                    fontPath="fonts/Quicksand-Light.ttf"/>
+
+                <TextView
+                    android:id="@+id/setsExercise"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="start|center_vertical"
+                    android:layout_toRightOf="@+id/setsExerciseLabel"
+                    android:layout_toEndOf="@+id/setsExerciseLabel"
+                    android:paddingLeft="0dp"
+                    android:paddingRight="0dp"
+                    android:paddingStart="0dp"
+                    android:paddingEnd="0dp"
+                    android:text="3"
+                    android:textColor="@android:color/black"
+                    android:textSize="16sp"
+                    fontPath="fonts/Quicksand-Light.ttf"/>
+
+                <TextView
+                    android:id="@+id/repsExerciseLabel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/setsExercise"
+                    android:gravity="start|center_vertical"
+                    android:paddingLeft="@dimen/activity_horizontal_margin"
+                    android:paddingRight="0dp"
+                    android:paddingStart="@dimen/activity_horizontal_margin"
+                    android:paddingEnd="0dp"
+                    android:text="Repetições: "
                     android:textColor="@android:color/black"
                     android:textSize="16sp"
                     fontPath="fonts/Quicksand-Light.ttf"/>
@@ -85,11 +116,28 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/setsExercise"
                     android:gravity="start|center_vertical"
+                    android:layout_toRightOf="@+id/repsExerciseLabel"
+                    android:layout_toEndOf="@+id/repsExerciseLabel"
+                    android:paddingLeft="0dp"
+                    android:paddingRight="0dp"
+                    android:paddingStart="0dp"
+                    android:paddingEnd="0dp"
+                    android:text="10"
+                    android:textColor="@android:color/black"
+                    android:textSize="16sp"
+                    fontPath="fonts/Quicksand-Light.ttf"/>
+
+                <TextView
+                    android:id="@+id/restExerciseLabel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/repsExercise"
+                    android:gravity="start|center_vertical"
                     android:paddingLeft="@dimen/activity_horizontal_margin"
                     android:paddingRight="0dp"
                     android:paddingStart="@dimen/activity_horizontal_margin"
                     android:paddingEnd="0dp"
-                    android:text="Repetições: 10"
+                    android:text="Descanso: "
                     android:textColor="@android:color/black"
                     android:textSize="16sp"
                     fontPath="fonts/Quicksand-Light.ttf"/>
@@ -100,11 +148,13 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/repsExercise"
                     android:gravity="start|center_vertical"
-                    android:paddingLeft="@dimen/activity_horizontal_margin"
+                    android:layout_toRightOf="@+id/restExerciseLabel"
+                    android:layout_toEndOf="@+id/restExerciseLabel"
+                    android:paddingLeft="0dp"
                     android:paddingRight="0dp"
-                    android:paddingStart="@dimen/activity_horizontal_margin"
+                    android:paddingStart="0dp"
                     android:paddingEnd="0dp"
-                    android:text="Descanso: 1 minuto"
+                    android:text="60"
                     android:textColor="@android:color/black"
                     android:textSize="16sp"
                     fontPath="fonts/Quicksand-Light.ttf"/>

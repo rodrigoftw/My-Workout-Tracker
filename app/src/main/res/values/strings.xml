@@ -31,6 +31,21 @@
     <!-- Help Activity -->
     <string name="quit_help_button">Fechar Ajuda</string>
 
+    <!-- About Activity -->
+    <string name="about_text">O My Workout Tracker é um aplicativo que gerencia suas fichas de treino,
+        medidas e peso, tornando-se uma ferramenta prática e fácil de usar na academia. Além de mostrar
+        seus exercícios diários e o movimento correto de cada um deles, ele também conta com um histórico
+        de peso e medidas, para que você possa ter um feedback do seu corpo sempre que necessário.
+        É possível utilizá-lo instantaneamente após criar sua conta no sistema web.
+    </string>
+
+    <string name="about_text2">
+        Para utilizá-lo, é necessária a criação de sua conta no Workout Tracker. Somente assim o usuário
+        poderá utilizar o app, já que suas informações serão atualizadas pelo sistema web. A cada ficha
+        criada no Workout Tracker o usuário deve informar seu peso, altura e medidas ao instrutor da
+        academia, para que o mesmo possa criá-la.
+    </string>
+
     <!-- Navigation Menu -->
     <string name="action_settings">Configurações</string>
     <string name="profile_icon">Ícone de Perfil</string>
@@ -50,6 +65,7 @@
     <string name="calendar_title">Calendário</string>
     <string name="forgot_password_title">Recuperação de Senha</string>
     <string name="user_data_title">Editar Dados</string>
+    <string name="about_title">Sobre o My Workout Tracker</string>
 
     <!-- navigation drawer item labels  -->
     <string-array name="nav_drawer_labels">
@@ -66,8 +82,5 @@
     <string name="image_exercise_description">Imagem do Exercício</string>
 
     <string name="forgot_password_success">O link de redefinição de senha foi enviado para o seu email.</string>
-
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 </resources>

@@ -165,7 +165,7 @@ public class LoginActivity extends BaseActivity {
             public void onComplete(@NonNull Task<AuthResult> task) {
                 progressDialog.dismiss();
                 if (task.isSuccessful()){
-                    /*finish();*/
+                    finish();
                     startActivity(new Intent(getApplicationContext(), TrainingScheduleActivity.class));
                 } else {
                     invalidCredentialsDialog(ctx);

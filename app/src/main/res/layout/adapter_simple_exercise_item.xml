@@ -48,6 +48,20 @@
             android:gravity="center"
             fontPath="fonts/Quicksand-Light.ttf" />
 
+        <TextView
+            android:id="@+id/exerciseRest"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@+id/exerciseReps"
+            android:layout_toRightOf="@+id/exerciseReps"
+            android:layout_marginLeft="16dp"
+            android:layout_marginStart="16dp"
+            android:textSize="14sp"
+            android:textColor="@color/colorPrimary"
+            android:text="60 segundos"
+            android:gravity="center"
+            fontPath="fonts/Quicksand-Light.ttf" />
+
     </RelativeLayout>
 
 </RelativeLayout>

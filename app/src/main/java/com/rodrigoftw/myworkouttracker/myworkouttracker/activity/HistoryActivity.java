@@ -163,7 +163,7 @@ public class HistoryActivity extends BaseActivity implements NavigationView.OnNa
             startActivity(new Intent(HistoryActivity.this, HelpActivity.class));
             /*finish();*/
         } else if (id == R.id.nav_about) {
-
+            startActivity(new Intent(HistoryActivity.this, AboutActivity.class));
         } else if (id == R.id.nav_logout) {
             logOutDialog(ctx);
             /*firebaseAuth.signOut();*/

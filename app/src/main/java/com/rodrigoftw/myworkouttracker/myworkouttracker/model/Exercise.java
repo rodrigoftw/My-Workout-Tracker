@@ -6,7 +6,7 @@ public class Exercise {
     private String typeExercise;
     private int setsExercise;
     private int repsExercise;
-    private String restExercise;
+    private int restExercise;
     private String imageExercise;
    /* private int colorId1;
     private int colorId2;
@@ -14,7 +14,7 @@ public class Exercise {
 
     public Exercise(){}
 
-    public Exercise(int idExercise, String nameExercise, int setsExercise, int repsExercise, String restExercise, String imageExercise/*, int colorId1, int colorId2, TimeInterpolator interpolator*/) {
+    public Exercise(int idExercise, String nameExercise, int setsExercise, int repsExercise, int restExercise, String imageExercise/*, int colorId1, int colorId2, TimeInterpolator interpolator*/) {
         this.idExercise = idExercise;
         this.nameExercise = nameExercise;
         this.setsExercise = setsExercise;
@@ -26,12 +26,12 @@ public class Exercise {
         this.interpolator = interpolator;*/
     }
 
-    public Exercise(int idExercise, String nameExercise/*, int setsExercise, int repsExercise, String restExercise*/) {
+    public Exercise(int idExercise, String nameExercise, int setsExercise, int repsExercise, int restExercise) {
         this.idExercise = idExercise;
         this.nameExercise = nameExercise;
-        /*this.setsExercise = setsExercise;
+        this.setsExercise = setsExercise;
         this.repsExercise = repsExercise;
-        this.restExercise = restExercise;*/
+        this.restExercise = restExercise;
     }
 
     public int getIdExercise() {
@@ -74,12 +74,13 @@ public class Exercise {
         this.repsExercise = repsExercise;
     }
 
-    public String getRestExercise() {
-        return "Descanso: " + restExercise;
+    public int getRestExercise() {
+        return restExercise;
     }
 
-    public void setRestExercise(String restExercise) {
-        this.restExercise = "Descanso: " + restExercise + " segundos";
+    public void setRestExercise(int restExercise) {
+        this.restExercise = restExercise;
+        /*this.restExercise = restExercise + " segundos";*/
     }
 
     public String getImageExercise() {

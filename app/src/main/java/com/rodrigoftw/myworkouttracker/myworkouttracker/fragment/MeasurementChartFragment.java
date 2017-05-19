@@ -120,11 +120,25 @@ public class MeasurementChartFragment extends BaseFragment {
 
             List<PointValue> values = new ArrayList<PointValue>();
             for (int j = 0; j < numberOfPoints; ++j) {
-                values.add(new PointValue(j, randomNumbersTab[i][j]));
+                //values.add(new PointValue(j, randomNumbersTab[i][j]));
             }
 
+            values.add(new PointValue(1, (float) 35.9));
+            values.add(new PointValue(2, (float) 36.7));
+            values.add(new PointValue(3, (float) 37.4));
+            values.add(new PointValue(4, (float) 38.2));
+            values.add(new PointValue(5, (float) 39.5));
+            values.add(new PointValue(6, (float) 40.1));
+            values.add(new PointValue(7, (float) 40.7));
+            values.add(new PointValue(8, (float) 41.0));
+            values.add(new PointValue(9, (float) 42.8));
+            values.add(new PointValue(10, (float) 43.9));
+            values.add(new PointValue(11, (float) 44.3));
+            values.add(new PointValue(12, (float) 45.0));
+
             Line line = new Line(values);
-            line.setColor(ChartUtils.COLORS[i]);
+            //line.setColor(ChartUtils.COLORS[i]);
+            line.setColor(getResources().getColor(R.color.colorPrimary));
             line.setShape(shape);
             line.setCubic(isCubic);
             line.setFilled(isFilled);
@@ -146,7 +160,7 @@ public class MeasurementChartFragment extends BaseFragment {
             Axis axisY = new Axis().setHasLines(true);
             if (hasAxesNames) {
                 axisX.setName("Este ano");
-                axisY.setName("Peso (em Kg)");
+                axisY.setName("Tamanho (em cm)");
             }
             data.setAxisXBottom(axisX);
             data.setAxisYLeft(axisY);
@@ -328,7 +342,48 @@ public class MeasurementChartFragment extends BaseFragment {
 
         @Override
         public void onValueSelected(int lineIndex, int pointIndex, PointValue value) {
-            Toast.makeText(getActivity(), "Selected: " + value, Toast.LENGTH_SHORT).show();
+            //Toast.makeText(getActivity(), "Selected: " + value, Toast.LENGTH_SHORT).show();
+            float monthvalue = value.getX();
+            String month = String.valueOf(value.getX());
+            switch ((int) monthvalue) {
+                case 1:
+                    month = "Janeiro";
+                    break;
+                case 2:
+                    month = "Fevereiro";
+                    break;
+                case 3:
+                    month = "Março";
+                    break;
+                case 4:
+                    month = "Abril";
+                    break;
+                case 5:
+                    month = "Maio";
+                    break;
+                case 6:
+                    month = "Junho";
+                    break;
+                case 7:
+                    month = "Julho";
+                    break;
+                case 8:
+                    month = "Agosto";
+                    break;
+                case 9:
+                    month = "Setembro";
+                    break;
+                case 10:
+                    month = "Outubro";
+                    break;
+                case 11:
+                    month = "Novembro";
+                    break;
+                case 12:
+                    month = "Dezembro";
+                    break;
+            }
+            Toast.makeText(getActivity(), month + " - Tamanho: " + value.getY() + " cm", Toast.LENGTH_SHORT).show();
         }
 
         @Override

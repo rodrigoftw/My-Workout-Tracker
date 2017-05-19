@@ -88,28 +88,28 @@ public class TrainingScheduleActivity extends BaseActivity implements Navigation
         }*/
 
         exercise.add(
-                new Exercise(1, "Supino Reto com Barra", 3, 10, "60 segundos", "http://www.exrx.net/AnimatedEx/PectoralSternal/BBBenchPress.gif")
+                new Exercise(1, "Supino Reto com Barra", 3, 10, 60, "http://www.exrx.net/AnimatedEx/PectoralSternal/BBBenchPress.gif")
         );
         exercise.add(
-                new Exercise(2, "Supino Inclinado com Barra", 3, 10, "60 segundos", "http://www.exrx.net/AnimatedEx/PectoralClavicular/BBInclineBenchPress.gif")
+                new Exercise(2, "Supino Inclinado com Barra", 3, 10, 60, "http://www.exrx.net/AnimatedEx/PectoralClavicular/BBInclineBenchPress.gif")
         );
         exercise.add(
-                new Exercise(3, "Supino Declinado com Barra", 3, 10, "60 segundos", "http://www.exrx.net/AnimatedEx/PectoralSternal/BBDeclineBenchPress.gif")
+                new Exercise(3, "Supino Declinado com Barra", 3, 10, 60, "http://www.exrx.net/AnimatedEx/PectoralSternal/BBDeclineBenchPress.gif")
         );
         exercise.add(
-                new Exercise(4, "Crossover", 3, 10, "60 segundos", "http://www.exrx.net/AnimatedEx/PectoralSternal/CBStandingFly.gif")
+                new Exercise(4, "Crossover", 3, 8, 60, "http://www.exrx.net/AnimatedEx/PectoralSternal/CBStandingFly.gif")
         );
         exercise.add(
-                new Exercise(5, "Barra Fixa", 4, 8, "90 segundos", "http://www.exrx.net/AnimatedEx/LatissimusDorsi/WTChinUp.gif")
+                new Exercise(5, "Barra Fixa", 4, 8, 90, "http://www.exrx.net/AnimatedEx/LatissimusDorsi/WTChinUp.gif")
         );
         exercise.add(
-                new Exercise(6, "Puxada Frontal", 3, 10, "60 segundos", "http://www.exrx.net/AnimatedEx/LatissimusDorsi/CBFrontPulldown.gif")
+                new Exercise(6, "Puxada Frontal", 3, 12, 60, "http://www.exrx.net/AnimatedEx/LatissimusDorsi/CBFrontPulldown.gif")
         );
         exercise.add(
-                new Exercise(7, "Puxada Traseira", 3, 10, "60 segundos", "http://www.exrx.net/AnimatedEx/LatissimusDorsi/CBRearPulldown.gif")
+                new Exercise(7, "Puxada Traseira", 3, 12, 60, "http://www.exrx.net/AnimatedEx/LatissimusDorsi/CBRearPulldown.gif")
         );
         exercise.add(
-                new Exercise(8, "Remada Sentada", 3, 12, "60 segundos", "http://www.exrx.net/AnimatedEx/BackGeneral/CBSeatedRowStraightBack.gif")
+                new Exercise(8, "Remada Sentada", 3, 12, 45, "http://www.exrx.net/AnimatedEx/BackGeneral/CBSeatedRowStraightBack.gif")
         );
 
         adapter = new ExerciseAdapter(ctx, exercise);
@@ -231,7 +231,7 @@ public class TrainingScheduleActivity extends BaseActivity implements Navigation
             startActivity(new Intent(TrainingScheduleActivity.this, HelpActivity.class));
             /*finish();*/
         } else if (id == R.id.nav_about) {
-
+            startActivity(new Intent(TrainingScheduleActivity.this, AboutActivity.class));
         } else if (id == R.id.nav_logout) {
             logOutDialog(ctx);
             /*firebaseAuth.signOut();*/
